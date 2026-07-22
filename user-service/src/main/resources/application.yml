@@ -22,6 +22,14 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
 
+paynest:
+  jwt:
+    secret: ${JWT_SECRET:b3BlbnNlc3NhbWUtc2VjcmV0LWNoYW5nZS1tZS1pbi1wcm9kdWN0aW9uLXBheW5lc3Q=}
+    # Access token expiry: 15 minutes (900000 ms)
+    expiration: ${JWT_EXPIRATION:900000}
+    # Refresh token expiry: 7 days (604800000 ms)
+    refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+
 logging:
   level:
     root: INFO
