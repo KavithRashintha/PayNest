@@ -1,0 +1,91 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          # ---------------------------------------------------------------------------
+          # Route definitions
+          # ---------------------------------------------------------------------------
+          routes:
+            # ----- User Service -----
+            - id: user-service
+              uri: ${USER_SERVICE_URL:http://localhost:8081}
+              predicates:
+                - Path=/api/users/**
+
+            # ----- Finance Service -----
+            - id: finance-service
+              uri: ${FINANCE_SERVICE_URL:http://localhost:8082}
+              predicates:
+                - Path=/api/finance/**
+
+            # ----- AI Agent Service -----
+            - id: ai-service
+              uri: ${AI_SERVICE_URL:http://localhost:8090}
+              predicates:
+                - Path=/api/ai/**
+
+          # ---------------------------------------------------------------------------
+          # Global default filters applied to ALL routes
+          # ---------------------------------------------------------------------------
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+
+      # ---------------------------------------------------------------------------
+      # CORS — global config (handled here so downstream services don't need it)
+      # ---------------------------------------------------------------------------
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins:
+              - ${FRONTEND_URL:http://localhost:5173}
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+              - PATCH
+            allowed-headers:
+              - "*"
+            allow-credentials: true
+            max-age: 3600
+
+# ---------------------------------------------------------------------------
+# JWT configuration (shared secret — same value used in user-service)
+# ---------------------------------------------------------------------------
+paynest:
+  jwt:
+    secret: ${JWT_SECRET:b3BlbnNlc3NhbWUtc2VjcmV0LWNoYW5nZS1tZS1pbi1wcm9kdWN0aW9uLXBheW5lc3Q=}
+    # Public endpoints that bypass JWT validation
+    public-paths:
+      - /api/users/auth/register
+      - /api/users/auth/login
+      - /api/users/auth/refresh
+
+# ---------------------------------------------------------------------------
+# Actuator (health probe for Docker / K8s)
+# ---------------------------------------------------------------------------
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, gateway
+  endpoint:
+    health:
+      show-details: always
+
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+logging:
+  level:
+    root: INFO
+    com.paynest.gateway: DEBUG
+    org.springframework.cloud.gateway: DEBUG
