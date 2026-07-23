@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: finance-service-test
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;INIT=CREATE SCHEMA IF NOT EXISTS finance_schema
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        default_schema: finance_schema
+        dialect: org.hibernate.dialect.H2Dialect
+
+paynest:
+  jwt:
+    secret: b3BlbnNlc3NhbWUtc2VjcmV0LWNoYW5nZS1tZS1pbi1wcm9kdWN0aW9uLXBheW5lc3Q=
+    expiration: 900000
+    refresh-expiration: 604800000
