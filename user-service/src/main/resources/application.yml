@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/paynest_db?currentSchema=user_schema}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: user_schema
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+paynest:
+  jwt:
+    secret: ${JWT_SECRET:b3BlbnNlc3NhbWUtc2VjcmV0LWNoYW5nZS1tZS1pbi1wcm9kdWN0aW9uLXBheW5lc3Q=}
+    # Access token expiry: 15 minutes (900000 ms)
+    expiration: ${JWT_EXPIRATION:900000}
+    # Refresh token expiry: 7 days (604800000 ms)
+    refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+
+logging:
+  level:
+    root: INFO
+    com.paynest.userservice: DEBUG
+    org.hibernate.SQL: DEBUG
