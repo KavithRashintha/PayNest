@@ -2,6 +2,8 @@ export type TransactionType = 'INCOME' | 'EXPENSE' | 'TRANSFER';
 
 export type AccountType = 'BANK' | 'CASH' | 'CREDIT_CARD' | 'INVESTMENT' | 'SAVINGS' | 'OTHER';
 
+export type CategoryType = 'INCOME' | 'EXPENSE';
+
 export interface AccountResponse {
   id: number;
   userId: number;
@@ -18,6 +20,25 @@ export interface AccountRequest {
   type: AccountType;
   balance: number;
   currency: string;
+}
+
+export interface CategoryResponse {
+  id: number;
+  userId?: number;
+  name: string;
+  type: CategoryType;
+  icon?: string;
+  color?: string;
+  isSystemDefault?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CategoryRequest {
+  name: string;
+  type: CategoryType;
+  icon?: string;
+  color?: string;
 }
 
 export interface CategorySpendSummary {
