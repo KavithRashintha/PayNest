@@ -1,5 +1,25 @@
 export type TransactionType = 'INCOME' | 'EXPENSE' | 'TRANSFER';
 
+export type AccountType = 'BANK' | 'CASH' | 'CREDIT_CARD' | 'INVESTMENT' | 'SAVINGS' | 'OTHER';
+
+export interface AccountResponse {
+  id: number;
+  userId: number;
+  name: string;
+  type: AccountType;
+  balance: number;
+  currency: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface AccountRequest {
+  name: string;
+  type: AccountType;
+  balance: number;
+  currency: string;
+}
+
 export interface CategorySpendSummary {
   categoryId: number;
   categoryName: string;
