@@ -116,3 +116,24 @@ h1, h2, h3, h4, h5, h6 {
 .animate-spin {
   animation: spin 0.8s linear infinite;
 }
+
+/* Interactive Input & Button Enhancements */
+.paynest-input:focus {
+  border-color: var(--indigo-500) !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+}
+
+.paynest-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.paynest-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .glass-panel {
+    border-radius: var(--radius-md);
+  }
+}
