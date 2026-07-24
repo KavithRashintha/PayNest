@@ -50,6 +50,17 @@ export interface CategorySpendSummary {
   percentageOfTotal: number;
 }
 
+export interface TransactionRequest {
+  accountId: number;
+  categoryId?: number;
+  toAccountId?: number;
+  amount: number;
+  type: TransactionType;
+  title: string;
+  description?: string;
+  transactionDate?: string;
+}
+
 export interface TransactionResponse {
   id: number;
   userId: number;
