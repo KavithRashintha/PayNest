@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { Header } from './Header';
+import { MobileDrawer } from './MobileDrawer';
 
 interface AppLayoutProps {
   children?: React.ReactNode;
@@ -29,8 +30,11 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         color: 'var(--text-primary)',
       }}
     >
-      {/* Desktop & Collapsible Sidebar */}
+      {/* Desktop Collapsible Sidebar */}
       <Sidebar isCollapsed={isCollapsed} onToggleCollapse={toggleSidebar} />
+
+      {/* Mobile Overlay Navigation Drawer */}
+      <MobileDrawer isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
 
       {/* Main Content Area */}
       <div

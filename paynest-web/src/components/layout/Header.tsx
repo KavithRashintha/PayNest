@@ -1,14 +1,24 @@
 import React from 'react';
 import { Menu, LogOut, Wallet, Bell, Search } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
+import { useQuery } from '@tanstack/react-query';
+import { financeApi } from '../../api/finance';
 
 interface HeaderProps {
   onMobileMenuToggle?: () => void;
-  totalBalance?: number;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, totalBalance = 0 }) => {
+export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
   const { user, logout } = useAuth();
+
+  const { data: summary } = useQuery({
+    queryKey: ['financialSummary'],
+    queryFn: financeApi.getSummary,
+    staleTime: 30000,
+    retry: false,
+  });
+
+  const totalBalance = summary?.totalBalance ?? 0;
 
   const formattedBalance = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
@@ -32,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, totalBalance
         zIndex: 30,
       }}
     >
-      {/* Left: Mobile Menu Toggle & Search Placeholder */}
+      {/* Left: Mobile Menu Toggle & Search Bar */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
         {onMobileMenuToggle && (
           <button
@@ -58,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, totalBalance
             position: 'relative',
             display: 'flex',
             alignItems: 'center',
-            width: '260px',
+            width: '240px',
           }}
         >
           <Search
@@ -72,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, totalBalance
           />
           <input
             type="text"
-            placeholder="Search transactions, accounts..."
+            placeholder="Search transactions..."
             style={{
               width: '100%',
               padding: '8px 12px 8px 36px',
