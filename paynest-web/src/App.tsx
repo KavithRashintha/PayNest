@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './context/AuthContext';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
-import { DashboardPlaceholder } from './pages/DashboardPlaceholder';
+import { DashboardPage } from './pages/DashboardPage';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { AppLayout } from './components/layout/AppLayout';
 
@@ -32,7 +32,7 @@ export const App: React.FC = () => {
                 </ProtectedRoute>
               }
             >
-              <Route path="/dashboard" element={<DashboardPlaceholder />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
