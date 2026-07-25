@@ -9,6 +9,7 @@ import { AccountsPage } from './pages/AccountsPage';
 import { CategoriesPage } from './pages/CategoriesPage';
 import { TransactionsPage } from './pages/TransactionsPage';
 import { BudgetsPage } from './pages/BudgetsPage';
+import { AIAdvisorPage } from './pages/AIAdvisorPage';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { AppLayout } from './components/layout/AppLayout';
 
@@ -41,6 +42,7 @@ export const App: React.FC = () => {
               <Route path="/categories" element={<CategoriesPage />} />
               <Route path="/transactions" element={<TransactionsPage />} />
               <Route path="/budgets" element={<BudgetsPage />} />
+              <Route path="/ai-advisor" element={<AIAdvisorPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
