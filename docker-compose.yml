@@ -80,5 +80,15 @@ services:
       - finance-service
       - ai-service
 
+  paynest-web:
+    build:
+      context: ./paynest-web
+      dockerfile: Dockerfile
+    container_name: paynest-web
+    ports:
+      - "5173:80"
+    depends_on:
+      - gateway
+
 volumes:
   postgres_data:
