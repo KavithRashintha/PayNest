@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, LogOut, Wallet, Bell, Search } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
@@ -165,9 +166,19 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
 
         <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--border-subtle)' }} />
 
-        {/* User Profile & Logout */}
+        {/* User Profile Link & Logout */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link
+            to="/profile"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+            title="View Profile Settings"
+          >
             <div
               style={{
                 width: '34px',
@@ -193,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
                 {user?.email}
               </span>
             </div>
-          </div>
+          </Link>
 
           <button
             onClick={logout}
