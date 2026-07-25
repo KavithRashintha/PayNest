@@ -4,6 +4,8 @@ export type AccountType = 'BANK' | 'CASH' | 'CREDIT_CARD' | 'INVESTMENT' | 'SAVI
 
 export type CategoryType = 'INCOME' | 'EXPENSE';
 
+export type BudgetPeriod = 'WEEKLY' | 'MONTHLY' | 'YEARLY';
+
 export interface AccountResponse {
   id: number;
   userId: number;
@@ -40,6 +42,39 @@ export interface CategoryRequest {
   icon?: string;
   color?: string;
 }
+
+export interface BudgetResponse {
+  id: number;
+  userId: number;
+  categoryId: number;
+  categoryName?: string;
+  categoryIcon?: string;
+  categoryColor?: string;
+  amountLimit: number;
+  period: BudgetPeriod;
+  startDate: string;
+  endDate: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface BudgetRequest {
+  categoryId: number;
+  amountLimit: number;
+  period: BudgetPeriod;
+  startDate: string;
+  endDate: string;
+}
+
+export interface BudgetStatusResponse {
+  budget: BudgetResponse;
+  spentAmount: number;
+  remainingAmount: number;
+  percentageUsed: double;
+  isExceeded: boolean;
+}
+
+type double = number;
 
 export interface CategorySpendSummary {
   categoryId: number;
