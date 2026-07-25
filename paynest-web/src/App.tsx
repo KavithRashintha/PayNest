@@ -8,6 +8,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { AccountsPage } from './pages/AccountsPage';
 import { CategoriesPage } from './pages/CategoriesPage';
 import { TransactionsPage } from './pages/TransactionsPage';
+import { BudgetsPage } from './pages/BudgetsPage';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { AppLayout } from './components/layout/AppLayout';
 
@@ -39,6 +40,7 @@ export const App: React.FC = () => {
               <Route path="/accounts" element={<AccountsPage />} />
               <Route path="/categories" element={<CategoriesPage />} />
               <Route path="/transactions" element={<TransactionsPage />} />
+              <Route path="/budgets" element={<BudgetsPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
