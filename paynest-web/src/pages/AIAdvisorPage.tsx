@@ -12,10 +12,30 @@ import {
   TrendingUp,
   Loader2,
   RefreshCw,
+  Zap,
 } from 'lucide-react';
 import { aiApi, type ChatMessage } from '../api/ai';
 import { useAuth } from '../hooks/useAuth';
 import { Button } from '../components/ui/Button';
+
+/**
+ * Lightweight markdown-to-HTML renderer for chat messages.
+ * Handles: **bold**, *italic*, bullet lines (• / - ), and newlines.
+ */
+const renderMarkdown = (text: string): string => {
+  let html = text
+    // Escape HTML entities
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    // Bold: **text**
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // Italic: *text*
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Newlines to <br>
+    .replace(/\n/g, '<br/>');
+  return html;
+};
 
 const SUGGESTED_PROMPTS = [
   'How am I doing financially this month?',
@@ -73,7 +93,14 @@ export const AIAdvisorPage: React.FC = () => {
       const apiHistory = newHistory.slice(1);
       const res = await aiApi.chat(prompt, apiHistory);
 
-      setMessages((prev) => [...prev, { role: 'assistant', content: res.response }]);
+      setMessages((prev) => [
+        ...prev,
+        { role: 'assistant', content: res.response, actionsTaken: res.actionsTaken },
+      ]);
+
+      if (res.actionsTaken && res.actionsTaken.length > 0) {
+        refetchInsights();
+      }
     } catch (err: any) {
       console.error('AI chat error:', err);
       setMessages((prev) => [
@@ -373,22 +400,47 @@ export const AIAdvisorPage: React.FC = () => {
                     </div>
                   )}
 
-                  <div
-                    style={{
-                      maxWidth: '75%',
-                      padding: '12px 16px',
-                      borderRadius: isUser ? '18px 18px 2px 18px' : '18px 18px 18px 2px',
-                      backgroundColor: isUser ? 'rgba(99, 102, 241, 0.25)' : 'rgba(255, 255, 255, 0.05)',
-                      border: isUser
-                        ? '1px solid rgba(99, 102, 241, 0.4)'
-                        : '1px solid var(--border-subtle)',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.925rem',
-                      lineHeight: 1.5,
-                      whiteSpace: 'pre-wrap',
-                    }}
-                  >
-                    {m.content}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '75%' }}>
+                    <div
+                      style={{
+                        padding: '12px 16px',
+                        borderRadius: isUser ? '18px 18px 2px 18px' : '18px 18px 18px 2px',
+                        backgroundColor: isUser ? 'rgba(99, 102, 241, 0.25)' : 'rgba(255, 255, 255, 0.05)',
+                        border: isUser
+                          ? '1px solid rgba(99, 102, 241, 0.4)'
+                          : '1px solid var(--border-subtle)',
+                        color: 'var(--text-primary)',
+                        fontSize: '0.925rem',
+                        lineHeight: 1.6,
+                      }}
+                      dangerouslySetInnerHTML={{ __html: renderMarkdown(m.content) }}
+                    />
+
+                    {/* Agentic Action Badges */}
+                    {!isUser && m.actionsTaken && m.actionsTaken.length > 0 && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                        {m.actionsTaken.map((action, actionIdx) => (
+                          <div
+                            key={actionIdx}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              padding: '6px 12px',
+                              borderRadius: 'var(--radius-sm)',
+                              backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                              border: '1px solid rgba(16, 185, 129, 0.3)',
+                              color: 'var(--emerald-400)',
+                              fontSize: '0.775rem',
+                              fontWeight: 600,
+                            }}
+                          >
+                            <Zap size={13} color="var(--emerald-400)" />
+                            <span>Executed: {action}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {isUser && (
