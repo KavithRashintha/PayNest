@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Wallet, Building2, Coins, DollarSign, ArrowRight } from 'lucide-react';
 import { Input } from '../ui/Input';
+import { Select } from '../ui/Select';
 import { Button } from '../ui/Button';
 import { Alert } from '../ui/Alert';
 import { accountsApi } from '../../api/accounts';
@@ -101,7 +102,7 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
         backdropFilter: 'blur(8px)',
       }}
       className="animate-fade-in"
@@ -110,11 +111,11 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({
         style={{
           width: '100%',
           maxWidth: '460px',
-          backgroundColor: '#0f1420',
-          border: '1px solid var(--border-subtle)',
+          backgroundColor: '#ffffff',
+          border: '1px solid #e5e7eb',
           borderRadius: 'var(--radius-lg)',
           padding: '28px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
           position: 'relative',
         }}
       >
@@ -127,7 +128,7 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({
             right: '20px',
             background: 'none',
             border: 'none',
-            color: 'var(--text-muted)',
+            color: '#9ca3af',
             cursor: 'pointer',
           }}
         >
@@ -150,8 +151,8 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({
             <Wallet size={22} color="#ffffff" />
           </div>
           <div>
-            <h3 style={{ fontSize: '1.25rem', color: '#ffffff', fontWeight: 700 }}>Add New Account</h3>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            <h3 style={{ fontSize: '1.25rem', color: '#111827', fontWeight: 700 }}>Add New Account</h3>
+            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>
               Create a financial account to track balances
             </span>
           </div>
@@ -171,37 +172,18 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({
           />
 
           {/* Account Type Selector */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-            <label
-              htmlFor="account-type"
-              style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}
-            >
-              Account Type
-            </label>
-            <select
-              id="account-type"
-              value={type}
-              onChange={(e) => setType(e.target.value as AccountType)}
-              className="paynest-input"
-              style={{
-                width: '100%',
-                padding: '12px 14px',
-                backgroundColor: 'var(--bg-input)',
-                color: 'var(--text-primary)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-md)',
-                fontSize: '0.925rem',
-                outline: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              {ACCOUNT_TYPES.map((t) => (
-                <option key={t.type} value={t.type} style={{ background: '#0f1420', color: '#fff' }}>
-                  {t.label}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Select
+            label="Account Type"
+            icon={<Building2 size={18} />}
+            value={type}
+            onChange={(e) => setType(e.target.value as AccountType)}
+          >
+            {ACCOUNT_TYPES.map((t) => (
+              <option key={t.type} value={t.type}>
+                {t.label}
+              </option>
+            ))}
+          </Select>
 
           {/* Initial Balance */}
           <Input
@@ -216,40 +198,18 @@ export const AddAccountModal: React.FC<AddAccountModalProps> = ({
           />
 
           {/* Currency Selector */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-            <label
-              htmlFor="account-currency"
-              style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}
-            >
-              Currency
-            </label>
-            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <Coins size={18} style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)' }} />
-              <select
-                id="account-currency"
-                value={currency}
-                onChange={(e) => setCurrency(e.target.value)}
-                className="paynest-input"
-                style={{
-                  width: '100%',
-                  padding: '12px 14px 12px 42px',
-                  backgroundColor: 'var(--bg-input)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: 'var(--radius-md)',
-                  fontSize: '0.925rem',
-                  outline: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                {CURRENCIES.map((c) => (
-                  <option key={c.code} value={c.code} style={{ background: '#0f1420', color: '#fff' }}>
-                    {c.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <Select
+            label="Currency"
+            icon={<Coins size={18} />}
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
+            {CURRENCIES.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.label}
+              </option>
+            ))}
+          </Select>
 
           {/* Action Buttons */}
           <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>

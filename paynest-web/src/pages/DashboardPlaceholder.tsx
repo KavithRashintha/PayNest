@@ -11,7 +11,7 @@ export const DashboardPlaceholder: React.FC = () => {
       style={{
         minHeight: '100vh',
         backgroundColor: 'var(--bg-primary)',
-        color: 'var(--text-primary)',
+        color: '#111827',
         padding: '32px 24px',
         display: 'flex',
         flexDirection: 'column',
@@ -25,7 +25,7 @@ export const DashboardPlaceholder: React.FC = () => {
           padding: '32px',
           borderRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-subtle)',
+          border: '1px solid #e5e7eb',
           backdropFilter: 'blur(16px)',
         }}
         className="animate-fade-in"
@@ -37,7 +37,7 @@ export const DashboardPlaceholder: React.FC = () => {
             justifyContent: 'space-between',
             marginBottom: '24px',
             paddingBottom: '20px',
-            borderBottom: '1px solid var(--border-subtle)',
+            borderBottom: '1px solid #e5e7eb',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -79,7 +79,7 @@ export const DashboardPlaceholder: React.FC = () => {
           </div>
           <div>
             <h2 style={{ fontSize: '1.2rem', fontWeight: 600 }}>Hello, {user?.fullName || 'User'}!</h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{user?.email}</p>
+            <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>{user?.email}</p>
           </div>
         </div>
 
@@ -96,10 +96,10 @@ export const DashboardPlaceholder: React.FC = () => {
               padding: '20px',
               borderRadius: 'var(--radius-md)',
               backgroundColor: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid var(--border-subtle)',
+              border: '1px solid #e5e7eb',
             }}
           >
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Base Currency</span>
+            <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Base Currency</span>
             <p style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--emerald-400)', marginTop: '4px' }}>
               {user?.currency || 'LKR'}
             </p>
@@ -109,10 +109,10 @@ export const DashboardPlaceholder: React.FC = () => {
               padding: '20px',
               borderRadius: 'var(--radius-md)',
               backgroundColor: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid var(--border-subtle)',
+              border: '1px solid #e5e7eb',
             }}
           >
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Auth Status</span>
+            <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Auth Status</span>
             <p style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--indigo-500)', marginTop: '4px' }}>
               Authenticated JWT
             </p>

@@ -26,24 +26,24 @@ export const Button: React.FC<ButtonProps> = ({
           background: 'var(--gradient-primary)',
           color: '#ffffff',
           border: 'none',
-          boxShadow: '0 4px 14px 0 rgba(99, 102, 241, 0.35)',
+          boxShadow: '0 2px 8px rgba(99, 102, 241, 0.25)',
         };
       case 'secondary':
         return {
-          background: 'rgba(255, 255, 255, 0.08)',
-          color: 'var(--text-primary)',
-          border: '1px solid var(--border-subtle)',
+          background: '#f3f4f6',
+          color: '#374151',
+          border: '1px solid #e5e7eb',
         };
       case 'outline':
         return {
           background: 'transparent',
-          color: 'var(--indigo-500)',
-          border: '1px solid var(--indigo-500)',
+          color: '#4f46e5',
+          border: '1px solid #6366f1',
         };
       case 'ghost':
         return {
           background: 'transparent',
-          color: 'var(--text-secondary)',
+          color: '#6b7280',
           border: 'none',
         };
     }

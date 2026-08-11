@@ -1,31 +1,30 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import React from 'react';
+import { ChevronDown } from 'lucide-react';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   icon?: React.ReactNode;
   error?: string;
+  children: React.ReactNode;
 }
 
-export const Input: React.FC<InputProps> = ({
+export const Select: React.FC<SelectProps> = ({
   label,
   icon,
   error,
-  type = 'text',
   className = '',
   id,
+  children,
+  style,
   ...props
 }) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const isPassword = type === 'password';
-  const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
-  const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
+  const selectId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
       {label && (
         <label
-          htmlFor={inputId}
+          htmlFor={selectId}
           style={{
             fontSize: '0.85rem',
             fontWeight: 500,
@@ -46,50 +45,51 @@ export const Input: React.FC<InputProps> = ({
               alignItems: 'center',
               color: '#9ca3af',
               pointerEvents: 'none',
+              zIndex: 2,
             }}
           >
             {icon}
           </div>
         )}
 
-        <input
-          id={inputId}
-          type={inputType}
+        <select
+          id={selectId}
           style={{
             width: '100%',
-            padding: icon ? '12px 40px 12px 42px' : isPassword ? '12px 42px 12px 14px' : '12px 14px',
+            padding: icon ? '12px 38px 12px 42px' : '12px 38px 12px 14px',
             backgroundColor: '#ffffff',
             color: '#111827',
-            border: error ? '1px solid var(--rose-500)' : '1px solid var(--border-subtle)',
+            border: error ? '1px solid var(--rose-500)' : '1px solid #e5e7eb',
             borderRadius: 'var(--radius-md)',
             fontSize: '0.925rem',
             outline: 'none',
+            cursor: 'pointer',
+            WebkitAppearance: 'none',
+            MozAppearance: 'none',
+            appearance: 'none',
             transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+            boxSizing: 'border-box',
+            ...style,
           }}
           className={`paynest-input ${className}`}
           {...props}
-        />
+        >
+          {children}
+        </select>
 
-        {isPassword && (
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            style={{
-              position: 'absolute',
-              right: '12px',
-              background: 'none',
-              border: 'none',
-              color: '#9ca3af',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              padding: '4px',
-            }}
-            tabIndex={-1}
-          >
-            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-          </button>
-        )}
+        <div
+          style={{
+            position: 'absolute',
+            right: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            color: '#9ca3af',
+            pointerEvents: 'none',
+            zIndex: 2,
+          }}
+        >
+          <ChevronDown size={18} />
+        </div>
       </div>
 
       {error && (

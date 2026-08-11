@@ -30,61 +30,34 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
   const { user, logout } = useAuth();
 
   const navItems: NavItem[] = [
-    {
-      name: 'Dashboard',
-      path: '/dashboard',
-      icon: <LayoutDashboard size={20} />,
-    },
-    {
-      name: 'Accounts',
-      path: '/accounts',
-      icon: <Wallet size={20} />,
-    },
-    {
-      name: 'Categories',
-      path: '/categories',
-      icon: <Tag size={20} />,
-    },
-    {
-      name: 'Transactions',
-      path: '/transactions',
-      icon: <ArrowLeftRight size={20} />,
-    },
-    {
-      name: 'Budgets',
-      path: '/budgets',
-      icon: <PieChart size={20} />,
-    },
-    {
-      name: 'AI Advisor',
-      path: '/ai-advisor',
-      icon: <Sparkles size={20} />,
-      badge: 'AI',
-      isAi: true,
-    },
+    { name: 'Dashboard',    path: '/dashboard',  icon: <LayoutDashboard size={19} /> },
+    { name: 'Accounts',     path: '/accounts',   icon: <Wallet size={19} /> },
+    { name: 'Categories',   path: '/categories', icon: <Tag size={19} /> },
+    { name: 'Transactions', path: '/transactions', icon: <ArrowLeftRight size={19} /> },
+    { name: 'Budgets',      path: '/budgets',    icon: <PieChart size={19} /> },
+    { name: 'AI Advisor',   path: '/ai-advisor', icon: <Sparkles size={19} />, badge: 'AI', isAi: true },
   ];
 
   return (
     <aside
       style={{
-        width: isCollapsed ? '72px' : '260px',
+        width: isCollapsed ? '68px' : '252px',
         height: '100vh',
         position: 'sticky',
         top: 0,
-        backgroundColor: 'rgba(15, 20, 32, 0.95)',
-        backdropFilter: 'blur(20px)',
-        borderRight: '1px solid var(--border-subtle)',
+        backgroundColor: '#ffffff',
+        borderRight: '1px solid #e5e7eb',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: isCollapsed ? '20px 10px' : '20px 16px',
-        transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        padding: isCollapsed ? '20px 10px' : '20px 14px',
+        transition: 'width 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
         zIndex: 40,
         userSelect: 'none',
         flexShrink: 0,
       }}
     >
-      {/* Top Section: Brand & Navigation */}
+      {/* Top Section */}
       <div>
         {/* Brand Header */}
         <div
@@ -92,37 +65,34 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
             display: 'flex',
             alignItems: 'center',
             justifyContent: isCollapsed ? 'center' : 'space-between',
-            marginBottom: '32px',
-            padding: isCollapsed ? '0' : '0 8px',
+            marginBottom: '28px',
+            padding: isCollapsed ? '0' : '0 4px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden' }}>
             <div
               style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: 'var(--radius-md)',
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
                 background: 'var(--gradient-primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 14px rgba(99, 102, 241, 0.35)',
                 flexShrink: 0,
               }}
             >
-              <Wallet size={22} color="#ffffff" />
+              <Wallet size={20} color="#ffffff" />
             </div>
 
             {!isCollapsed && (
               <span
                 style={{
                   fontFamily: 'var(--font-heading)',
-                  fontSize: '1.35rem',
+                  fontSize: '1.25rem',
                   fontWeight: 800,
-                  letterSpacing: '-0.02em',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
+                  letterSpacing: '-0.03em',
+                  color: '#111827',
                   whiteSpace: 'nowrap',
                 }}
               >
@@ -131,30 +101,50 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
             )}
           </div>
 
-          {/* Collapse Toggle Button */}
           <button
             onClick={onToggleCollapse}
             title={isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
             style={{
-              width: '28px',
-              height: '28px',
-              borderRadius: 'var(--radius-sm)',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid var(--border-subtle)',
-              color: 'var(--text-secondary)',
+              width: '26px',
+              height: '26px',
+              borderRadius: '6px',
+              backgroundColor: '#f3f4f6',
+              border: '1px solid #e5e7eb',
+              color: '#6b7280',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              transition: 'all 0.2s ease',
+              transition: 'background-color 0.15s ease',
+              flexShrink: 0,
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#e5e7eb')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#f3f4f6')}
           >
-            {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+            {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
           </button>
         </div>
 
+        {/* Nav section label */}
+        {!isCollapsed && (
+          <span
+            style={{
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: '#9ca3af',
+              padding: '0 4px',
+              display: 'block',
+              marginBottom: '8px',
+            }}
+          >
+            Menu
+          </span>
+        )}
+
         {/* Nav Links */}
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
           {navItems.map((item) => (
             <NavLink
               key={item.path}
@@ -164,37 +154,39 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: isCollapsed ? 'center' : 'space-between',
-                padding: isCollapsed ? '12px' : '11px 14px',
-                borderRadius: 'var(--radius-md)',
+                padding: isCollapsed ? '11px' : '9px 12px',
+                borderRadius: '8px',
                 textDecoration: 'none',
                 color: isActive
-                  ? '#ffffff'
+                  ? '#4f46e5'
                   : item.isAi
-                  ? 'var(--emerald-400)'
-                  : 'var(--text-secondary)',
+                  ? '#059669'
+                  : '#374151',
                 backgroundColor: isActive
-                  ? 'rgba(99, 102, 241, 0.18)'
+                  ? '#eef2ff'
                   : 'transparent',
-                border: isActive
-                  ? '1px solid rgba(99, 102, 241, 0.4)'
-                  : '1px solid transparent',
-                transition: 'all 0.2s ease',
-                position: 'relative',
+                fontWeight: isActive ? 600 : 500,
+                transition: 'all 0.15s ease',
               })}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                if (!el.classList.contains('active')) {
+                  el.style.backgroundColor = '#f3f4f6';
+                }
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                if (!el.classList.contains('active')) {
+                  el.style.backgroundColor = 'transparent';
+                }
+              }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <span
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   {item.icon}
                 </span>
-
                 {!isCollapsed && (
-                  <span style={{ fontSize: '0.925rem', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                  <span style={{ fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
                     {item.name}
                   </span>
                 )}
@@ -203,15 +195,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
               {!isCollapsed && item.badge && (
                 <span
                   style={{
-                    fontSize: '0.7rem',
+                    fontSize: '0.65rem',
                     fontWeight: 700,
                     padding: '2px 7px',
                     borderRadius: 'var(--radius-full)',
-                    background: item.isAi
-                      ? 'var(--gradient-emerald)'
-                      : 'var(--gradient-primary)',
+                    background: item.isAi ? 'var(--gradient-emerald)' : 'var(--gradient-primary)',
                     color: '#ffffff',
-                    boxShadow: item.isAi ? '0 0 10px rgba(16, 185, 129, 0.4)' : undefined,
+                    letterSpacing: '0.04em',
                   }}
                 >
                   {item.badge}
@@ -222,14 +212,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
         </nav>
       </div>
 
-      {/* Bottom Section: User Avatar & Logout */}
+      {/* Bottom Section: User & Logout */}
       <div
         style={{
-          borderTop: '1px solid var(--border-subtle)',
-          paddingTop: '16px',
+          borderTop: '1px solid #e5e7eb',
+          paddingTop: '14px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '8px',
+          gap: '6px',
         }}
       >
         <div
@@ -237,23 +227,22 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
             display: 'flex',
             alignItems: 'center',
             justifyContent: isCollapsed ? 'center' : 'space-between',
-            padding: isCollapsed ? '6px 0' : '8px 6px',
+            padding: isCollapsed ? '4px 0' : '6px 4px',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden' }}>
             <div
               style={{
-                width: '34px',
-                height: '34px',
+                width: '32px',
+                height: '32px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                border: '1px solid var(--indigo-500)',
+                background: 'var(--gradient-primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '0.85rem',
+                fontSize: '0.8rem',
                 fontWeight: 700,
-                color: 'var(--indigo-500)',
+                color: '#ffffff',
                 flexShrink: 0,
               }}
             >
@@ -264,9 +253,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
               <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 <span
                   style={{
-                    fontSize: '0.85rem',
+                    fontSize: '0.825rem',
                     fontWeight: 600,
-                    color: 'var(--text-primary)',
+                    color: '#111827',
                     whiteSpace: 'nowrap',
                     textOverflow: 'ellipsis',
                     overflow: 'hidden',
@@ -276,8 +265,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
                 </span>
                 <span
                   style={{
-                    fontSize: '0.75rem',
-                    color: 'var(--text-muted)',
+                    fontSize: '0.73rem',
+                    color: '#9ca3af',
                     whiteSpace: 'nowrap',
                     textOverflow: 'ellipsis',
                     overflow: 'hidden',
@@ -296,18 +285,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggleCollapse 
               style={{
                 background: 'none',
                 border: 'none',
-                color: 'var(--text-muted)',
+                color: '#9ca3af',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 padding: '6px',
-                borderRadius: 'var(--radius-sm)',
-                transition: 'color 0.2s ease',
+                borderRadius: '6px',
+                transition: 'color 0.15s ease, background-color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--rose-500)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#ef4444';
+                e.currentTarget.style.backgroundColor = '#fef2f2';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#9ca3af';
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
             >
-              <LogOut size={18} />
+              <LogOut size={16} />
             </button>
           )}
         </div>

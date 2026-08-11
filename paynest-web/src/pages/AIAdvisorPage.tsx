@@ -175,10 +175,10 @@ export const AIAdvisorPage: React.FC = () => {
             <Sparkles size={24} color="#ffffff" />
           </div>
           <div>
-            <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+            <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827' }}>
               AI Financial Advisor
             </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+            <p style={{ color: '#6b7280', fontSize: '0.9rem' }}>
               Real-time financial analysis, smart budget alerts, and AI copilot chat.
             </p>
           </div>
@@ -223,7 +223,7 @@ export const AIAdvisorPage: React.FC = () => {
         <div
           style={{
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
             borderRadius: 'var(--radius-lg)',
             padding: '20px',
             display: 'flex',
@@ -234,7 +234,7 @@ export const AIAdvisorPage: React.FC = () => {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <TrendingUp size={18} color="var(--indigo-500)" />
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111827' }}>
               AI Insights Overview
             </h3>
           </div>
@@ -288,7 +288,7 @@ export const AIAdvisorPage: React.FC = () => {
                         backgroundColor: 'rgba(99, 102, 241, 0.08)',
                         border: '1px solid rgba(99, 102, 241, 0.2)',
                         fontSize: '0.825rem',
-                        color: 'var(--text-primary)',
+                        color: '#111827',
                         lineHeight: 1.45,
                       }}
                     >
@@ -331,7 +331,7 @@ export const AIAdvisorPage: React.FC = () => {
         <div
           style={{
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
             borderRadius: 'var(--radius-lg)',
             display: 'flex',
             flexDirection: 'column',
@@ -342,21 +342,21 @@ export const AIAdvisorPage: React.FC = () => {
           <div
             style={{
               padding: '16px 20px',
-              borderBottom: '1px solid var(--border-subtle)',
-              backgroundColor: 'rgba(0, 0, 0, 0.2)',
+              borderBottom: '1px solid #e5e7eb',
+              backgroundColor: '#f9fafb',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Bot size={20} color="var(--emerald-400)" />
-              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#ffffff' }}>
+              <Bot size={20} color="#059669" />
+              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#111827' }}>
                 PayNest Copilot Chat
               </span>
             </div>
 
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+            <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
               Powered by Gemini & Financial LLM
             </span>
           </div>
@@ -409,7 +409,7 @@ export const AIAdvisorPage: React.FC = () => {
                         border: isUser
                           ? '1px solid rgba(99, 102, 241, 0.4)'
                           : '1px solid var(--border-subtle)',
-                        color: 'var(--text-primary)',
+                        color: '#111827',
                         fontSize: '0.925rem',
                         lineHeight: 1.6,
                       }}
@@ -482,12 +482,12 @@ export const AIAdvisorPage: React.FC = () => {
                   style={{
                     padding: '12px 16px',
                     borderRadius: '18px 18px 18px 2px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid var(--border-subtle)',
+                    backgroundColor: '#f9fafb',
+                    border: '1px solid #e5e7eb',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
-                    color: 'var(--text-secondary)',
+                    color: '#6b7280',
                     fontSize: '0.85rem',
                   }}
                 >
@@ -504,15 +504,15 @@ export const AIAdvisorPage: React.FC = () => {
           <div
             style={{
               padding: '10px 16px',
-              borderTop: '1px solid var(--border-subtle)',
-              backgroundColor: 'rgba(0, 0, 0, 0.15)',
+              borderTop: '1px solid #e5e7eb',
+              backgroundColor: '#f9fafb',
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
               overflowX: 'auto',
             }}
           >
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', flexShrink: 0 }}>
+            <span style={{ fontSize: '0.75rem', color: '#9ca3af', whiteSpace: 'nowrap', flexShrink: 0 }}>
               Suggested Prompts:
             </span>
             {SUGGESTED_PROMPTS.map((prompt, i) => (
@@ -524,9 +524,9 @@ export const AIAdvisorPage: React.FC = () => {
                 style={{
                   padding: '5px 11px',
                   borderRadius: 'var(--radius-full)',
-                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                  border: '1px solid var(--border-subtle)',
-                  color: 'var(--text-secondary)',
+                  backgroundColor: '#f9fafb',
+                  border: '1px solid #e5e7eb',
+                  color: '#6b7280',
                   fontSize: '0.775rem',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
@@ -546,7 +546,7 @@ export const AIAdvisorPage: React.FC = () => {
             }}
             style={{
               padding: '16px 20px',
-              borderTop: '1px solid var(--border-subtle)',
+              borderTop: '1px solid #e5e7eb',
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
@@ -562,10 +562,10 @@ export const AIAdvisorPage: React.FC = () => {
               style={{
                 flex: 1,
                 padding: '12px 16px',
-                backgroundColor: 'var(--bg-input)',
-                border: '1px solid var(--border-subtle)',
+                backgroundColor: '#ffffff',
+                border: '1px solid #e5e7eb',
                 borderRadius: 'var(--radius-full)',
-                color: 'var(--text-primary)',
+                color: '#111827',
                 fontSize: '0.925rem',
                 outline: 'none',
               }}

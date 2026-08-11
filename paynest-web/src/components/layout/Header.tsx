@@ -29,11 +29,10 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
   return (
     <header
       style={{
-        height: '64px',
+        height: '62px',
         width: '100%',
-        backgroundColor: 'rgba(15, 20, 32, 0.85)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid var(--border-subtle)',
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid #e5e7eb',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -52,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
             style={{
               background: 'none',
               border: 'none',
-              color: 'var(--text-secondary)',
+              color: '#6b7280',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -77,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
             style={{
               position: 'absolute',
               left: '12px',
-              color: 'var(--text-muted)',
+              color: '#9ca3af',
               pointerEvents: 'none',
             }}
           />
@@ -87,10 +86,10 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
             style={{
               width: '100%',
               padding: '8px 12px 8px 36px',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid var(--border-subtle)',
+              backgroundColor: '#f9fafb',
+              border: '1px solid #e5e7eb',
               borderRadius: 'var(--radius-full)',
-              color: 'var(--text-primary)',
+              color: '#111827',
               fontSize: '0.85rem',
               outline: 'none',
             }}
@@ -109,8 +108,8 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
             gap: '10px',
             padding: '6px 14px',
             borderRadius: 'var(--radius-full)',
-            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-            border: '1px solid rgba(16, 185, 129, 0.25)',
+            backgroundColor: '#f0fdf4',
+            border: '1px solid #bbf7d0',
           }}
         >
           <div
@@ -118,19 +117,19 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
               width: '24px',
               height: '24px',
               borderRadius: '50%',
-              backgroundColor: 'rgba(16, 185, 129, 0.2)',
+              backgroundColor: '#d1fae5',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
-            <Wallet size={14} color="var(--emerald-400)" />
+            <Wallet size={14} color="#059669" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '0.675rem', color: 'var(--text-muted)', lineHeight: 1 }}>
+            <span style={{ fontSize: '0.675rem', color: '#6b7280', lineHeight: 1 }}>
               Net Worth
             </span>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--emerald-400)' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#059669' }}>
               {user?.currency || 'LKR'} {formattedBalance}
             </span>
           </div>
@@ -142,7 +141,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
           style={{
             background: 'none',
             border: 'none',
-            color: 'var(--text-secondary)',
+            color: '#6b7280',
             cursor: 'pointer',
             position: 'relative',
             display: 'flex',
@@ -164,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
           />
         </button>
 
-        <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--border-subtle)' }} />
+        <div style={{ width: '1px', height: '24px', backgroundColor: '#e5e7eb' }} />
 
         {/* User Profile Link & Logout */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -197,10 +196,10 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
               {user?.fullName ? user.fullName.charAt(0).toUpperCase() : 'U'}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#111827' }}>
                 {user?.fullName || 'User'}
               </span>
-              <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)' }}>
+              <span style={{ fontSize: '0.725rem', color: '#9ca3af' }}>
                 {user?.email}
               </span>
             </div>
@@ -212,7 +211,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle }) => {
             style={{
               background: 'none',
               border: 'none',
-              color: 'var(--text-muted)',
+              color: '#9ca3af',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',

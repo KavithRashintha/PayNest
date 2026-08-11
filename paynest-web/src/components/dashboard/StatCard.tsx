@@ -52,7 +52,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         padding: '24px',
         borderRadius: 'var(--radius-lg)',
         backgroundColor: 'var(--bg-card)',
-        border: '1px solid var(--border-subtle)',
+        border: '1px solid #e5e7eb',
         backdropFilter: 'blur(16px)',
         display: 'flex',
         flexDirection: 'column',
@@ -79,7 +79,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       />
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <span style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+        <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#6b7280' }}>
           {title}
         </span>
         <div
@@ -87,8 +87,8 @@ export const StatCard: React.FC<StatCardProps> = ({
             width: '42px',
             height: '42px',
             borderRadius: 'var(--radius-md)',
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid var(--border-subtle)',
+            backgroundColor: '#f9fafb',
+            border: '1px solid #e5e7eb',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -101,10 +101,10 @@ export const StatCard: React.FC<StatCardProps> = ({
 
       <div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>
+          <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#9ca3af' }}>
             {currency}
           </span>
-          <span style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+          <span style={{ fontSize: '1.65rem', fontWeight: 800, color: '#111827', letterSpacing: '-0.02em' }}>
             {formattedAmount}
           </span>
         </div>

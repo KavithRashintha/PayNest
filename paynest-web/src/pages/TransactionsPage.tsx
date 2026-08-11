@@ -68,10 +68,10 @@ export const TransactionsPage: React.FC = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827' }}>
             Transactions Log
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', marginTop: '2px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.925rem', marginTop: '2px' }}>
             View and manage all income, expenses, and account transfers.
           </p>
         </div>
@@ -118,10 +118,10 @@ export const TransactionsPage: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: 'rgba(255, 255, 255, 0.04)',
+            backgroundColor: '#f9fafb',
             padding: '4px',
             borderRadius: 'var(--radius-md)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         >
           <button
@@ -130,8 +130,8 @@ export const TransactionsPage: React.FC = () => {
               padding: '8px 16px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
-              backgroundColor: activeTab === 'ALL' ? 'rgba(99, 102, 241, 0.2)' : 'transparent',
-              color: activeTab === 'ALL' ? '#ffffff' : 'var(--text-secondary)',
+              backgroundColor: activeTab === 'ALL' ? '#eef2ff' : 'transparent',
+              color: activeTab === 'ALL' ? '#4f46e5' : '#6b7280',
               fontWeight: activeTab === 'ALL' ? 700 : 500,
               fontSize: '0.875rem',
               cursor: 'pointer',
@@ -147,8 +147,8 @@ export const TransactionsPage: React.FC = () => {
               padding: '8px 16px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
-              backgroundColor: activeTab === 'EXPENSE' ? 'rgba(244, 63, 94, 0.2)' : 'transparent',
-              color: activeTab === 'EXPENSE' ? 'var(--rose-500)' : 'var(--text-secondary)',
+              backgroundColor: activeTab === 'EXPENSE' ? '#fff1f2' : 'transparent',
+              color: activeTab === 'EXPENSE' ? '#f43f5e' : '#6b7280',
               fontWeight: activeTab === 'EXPENSE' ? 700 : 500,
               fontSize: '0.875rem',
               cursor: 'pointer',
@@ -168,8 +168,8 @@ export const TransactionsPage: React.FC = () => {
               padding: '8px 16px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
-              backgroundColor: activeTab === 'INCOME' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-              color: activeTab === 'INCOME' ? 'var(--emerald-400)' : 'var(--text-secondary)',
+              backgroundColor: activeTab === 'INCOME' ? '#ecfdf5' : 'transparent',
+              color: activeTab === 'INCOME' ? '#059669' : '#6b7280',
               fontWeight: activeTab === 'INCOME' ? 700 : 500,
               fontSize: '0.875rem',
               cursor: 'pointer',
@@ -189,8 +189,8 @@ export const TransactionsPage: React.FC = () => {
               padding: '8px 16px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
-              backgroundColor: activeTab === 'TRANSFER' ? 'rgba(99, 102, 241, 0.2)' : 'transparent',
-              color: activeTab === 'TRANSFER' ? 'var(--indigo-500)' : 'var(--text-secondary)',
+              backgroundColor: activeTab === 'TRANSFER' ? '#eef2ff' : 'transparent',
+              color: activeTab === 'TRANSFER' ? '#4f46e5' : '#6b7280',
               fontWeight: activeTab === 'TRANSFER' ? 700 : 500,
               fontSize: '0.875rem',
               cursor: 'pointer',
@@ -214,7 +214,7 @@ export const TransactionsPage: React.FC = () => {
               left: '12px',
               top: '50%',
               transform: 'translateY(-50%)',
-              color: 'var(--text-muted)',
+              color: '#9ca3af',
             }}
           />
           <input
@@ -226,10 +226,10 @@ export const TransactionsPage: React.FC = () => {
             style={{
               width: '100%',
               padding: '8px 12px 8px 36px',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid var(--border-subtle)',
+              backgroundColor: '#f9fafb',
+              border: '1px solid #e5e7eb',
               borderRadius: 'var(--radius-full)',
-              color: 'var(--text-primary)',
+              color: '#111827',
               fontSize: '0.875rem',
               outline: 'none',
             }}
@@ -242,7 +242,7 @@ export const TransactionsPage: React.FC = () => {
         style={{
           borderRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-subtle)',
+          border: '1px solid #e5e7eb',
           backdropFilter: 'blur(16px)',
           overflow: 'hidden',
         }}
@@ -286,10 +286,10 @@ export const TransactionsPage: React.FC = () => {
             >
               <Receipt size={30} color="var(--indigo-500)" />
             </div>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '6px' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#111827', marginBottom: '6px' }}>
               No Transactions Found
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', maxWidth: '380px', marginBottom: '20px' }}>
+            <p style={{ color: '#6b7280', fontSize: '0.9rem', maxWidth: '380px', marginBottom: '20px' }}>
               {searchQuery
                 ? `No transactions matching "${searchQuery}"`
                 : 'Log income, expenses, or transfers to build your history.'}
@@ -369,7 +369,7 @@ export const TransactionsPage: React.FC = () => {
 
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                        <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#111827' }}>
                           {t.title}
                         </span>
 
@@ -390,7 +390,7 @@ export const TransactionsPage: React.FC = () => {
                         )}
                       </div>
 
-                      <span style={{ fontSize: '0.775rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                      <span style={{ fontSize: '0.775rem', color: '#9ca3af', marginTop: '2px' }}>
                         {isTransfer
                           ? `${t.accountName || 'Account'} ➔ ${t.toAccountName || 'Destination'}`
                           : t.accountName || 'Account'}{' '}
@@ -448,14 +448,14 @@ export const TransactionsPage: React.FC = () => {
           <div
             style={{
               padding: '16px 24px',
-              borderTop: '1px solid var(--border-subtle)',
+              borderTop: '1px solid #e5e7eb',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               backgroundColor: 'rgba(0, 0, 0, 0.2)',
             }}
           >
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>
               Page <strong>{page + 1}</strong> of <strong>{totalPages}</strong>
             </span>
 

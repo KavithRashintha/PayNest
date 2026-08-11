@@ -20,7 +20,7 @@ export const RecentTransactionsCard: React.FC<RecentTransactionsCardProps> = ({
           padding: '32px',
           borderRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-subtle)',
+          border: '1px solid #e5e7eb',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -43,10 +43,10 @@ export const RecentTransactionsCard: React.FC<RecentTransactionsCardProps> = ({
         >
           <Receipt size={24} color="var(--indigo-500)" />
         </div>
-        <h4 style={{ fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
+        <h4 style={{ fontSize: '1rem', color: '#111827', marginBottom: '4px' }}>
           No Transactions Recorded
         </h4>
-        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+        <p style={{ fontSize: '0.85rem', color: '#9ca3af' }}>
           Your recent activities will show up here once you log income or expenses.
         </p>
       </div>
@@ -59,7 +59,7 @@ export const RecentTransactionsCard: React.FC<RecentTransactionsCardProps> = ({
         padding: '24px',
         borderRadius: 'var(--radius-lg)',
         backgroundColor: 'var(--bg-card)',
-        border: '1px solid var(--border-subtle)',
+        border: '1px solid #e5e7eb',
         backdropFilter: 'blur(16px)',
         display: 'flex',
         flexDirection: 'column',
@@ -75,10 +75,10 @@ export const RecentTransactionsCard: React.FC<RecentTransactionsCardProps> = ({
         }}
       >
         <div>
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#111827' }}>
             Recent Transactions
           </h3>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>
             Latest account activity
           </span>
         </div>
@@ -125,7 +125,7 @@ export const RecentTransactionsCard: React.FC<RecentTransactionsCardProps> = ({
                 padding: '12px 14px',
                 borderRadius: 'var(--radius-md)',
                 backgroundColor: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
                 transition: 'background-color 0.2s ease',
               }}
             >
@@ -161,10 +161,10 @@ export const RecentTransactionsCard: React.FC<RecentTransactionsCardProps> = ({
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#111827' }}>
                     {t.title}
                   </span>
-                  <span style={{ fontSize: '0.775rem', color: 'var(--text-muted)' }}>
+                  <span style={{ fontSize: '0.775rem', color: '#9ca3af' }}>
                     {t.categoryName || 'General'} • {t.accountName || 'Account'} • {formattedDate}
                   </span>
                 </div>

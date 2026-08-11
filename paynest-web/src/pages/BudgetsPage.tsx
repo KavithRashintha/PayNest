@@ -69,10 +69,10 @@ export const BudgetsPage: React.FC = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827' }}>
             Budget Management
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', marginTop: '2px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.925rem', marginTop: '2px' }}>
             Set category spending caps and monitor real-time usage.
           </p>
         </div>
@@ -116,11 +116,11 @@ export const BudgetsPage: React.FC = () => {
             padding: '20px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         >
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Total Budget Limit</span>
-          <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
+          <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Total Budget Limit</span>
+          <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111827', marginTop: '4px' }}>
             {currency} {formattedTotalLimit}
           </div>
         </div>
@@ -130,10 +130,10 @@ export const BudgetsPage: React.FC = () => {
             padding: '20px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         >
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Total Spent</span>
+          <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Total Spent</span>
           <div
             style={{
               fontSize: '1.4rem',
@@ -151,10 +151,10 @@ export const BudgetsPage: React.FC = () => {
             padding: '20px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         >
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Active Caps</span>
+          <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Active Caps</span>
           <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--indigo-500)', marginTop: '4px' }}>
             {totalBudgets} Categories
           </div>
@@ -165,10 +165,10 @@ export const BudgetsPage: React.FC = () => {
             padding: '20px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         >
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Over-Budget Alerts</span>
+          <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Over-Budget Alerts</span>
           <div
             style={{
               fontSize: '1.4rem',
@@ -198,7 +198,7 @@ export const BudgetsPage: React.FC = () => {
                 height: '200px',
                 borderRadius: 'var(--radius-lg)',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
               }}
             />
           ))}
@@ -210,7 +210,7 @@ export const BudgetsPage: React.FC = () => {
             padding: '56px 24px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -232,10 +232,10 @@ export const BudgetsPage: React.FC = () => {
           >
             <PieChart size={30} color="var(--indigo-500)" />
           </div>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '6px' }}>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#111827', marginBottom: '6px' }}>
             No Budgets Configured
           </h3>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', maxWidth: '400px', marginBottom: '20px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.9rem', maxWidth: '400px', marginBottom: '20px' }}>
             Set up monthly or weekly spending limits on your categories to keep expenses on track.
           </p>
           <Button variant="primary" onClick={() => setIsAddModalOpen(true)}>
@@ -308,10 +308,10 @@ export const BudgetsPage: React.FC = () => {
                       <Tag size={20} />
                     </div>
                     <div>
-                      <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                      <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111827' }}>
                         {b.categoryName || 'Category'}
                       </h3>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', color: '#9ca3af' }}>
                         <Calendar size={12} />
                         <span>{b.startDate} to {b.endDate}</span>
                       </div>
@@ -336,10 +336,10 @@ export const BudgetsPage: React.FC = () => {
                 {/* Middle: Progress Bar & Spend Figures */}
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                      Spent: <strong style={{ color: '#ffffff' }}>{currency} {formattedSpent}</strong>
+                    <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>
+                      Spent: <strong style={{ color: '#111827' }}>{currency} {formattedSpent}</strong>
                     </span>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                    <span style={{ fontSize: '0.85rem', color: '#9ca3af' }}>
                       Limit: {currency} {formattedLimit}
                     </span>
                   </div>
@@ -349,7 +349,7 @@ export const BudgetsPage: React.FC = () => {
                     style={{
                       height: '10px',
                       width: '100%',
-                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                      backgroundColor: '#f3f4f6',
                       borderRadius: 'var(--radius-full)',
                       overflow: 'hidden',
                     }}
@@ -376,7 +376,7 @@ export const BudgetsPage: React.FC = () => {
                         Over by {currency} {formattedRemaining}
                       </span>
                     ) : (
-                      <span style={{ fontSize: '0.775rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span style={{ fontSize: '0.775rem', color: '#9ca3af', display: 'flex', alignItems: 'center', gap: '4px' }}>
                         <CheckCircle2 size={13} color="var(--emerald-400)" />
                         {currency} {formattedRemaining} remaining
                       </span>
@@ -391,7 +391,7 @@ export const BudgetsPage: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'flex-end',
                     paddingTop: '12px',
-                    borderTop: '1px solid var(--border-subtle)',
+                    borderTop: '1px solid #e5e7eb',
                   }}
                 >
                   <button

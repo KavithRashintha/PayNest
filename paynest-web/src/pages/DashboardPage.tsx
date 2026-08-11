@@ -63,10 +63,10 @@ export const DashboardPage: React.FC = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827' }}>
             Financial Overview
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', marginTop: '2px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.925rem', marginTop: '2px' }}>
             Welcome back, {user?.fullName || 'User'}! Here is your real-time wealth summary.
           </p>
         </div>

@@ -18,7 +18,7 @@ export const DashboardSkeleton: React.FC = () => {
               padding: '24px',
               borderRadius: 'var(--radius-lg)',
               backgroundColor: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid var(--border-subtle)',
+              border: '1px solid #e5e7eb',
               height: '140px',
               display: 'flex',
               flexDirection: 'column',
@@ -37,7 +37,7 @@ export const DashboardSkeleton: React.FC = () => {
               style={{
                 width: '70%',
                 height: '28px',
-                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                backgroundColor: '#f3f4f6',
                 borderRadius: '6px',
               }}
             />
@@ -58,7 +58,7 @@ export const DashboardSkeleton: React.FC = () => {
             height: '350px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         />
         <div
@@ -66,7 +66,7 @@ export const DashboardSkeleton: React.FC = () => {
             height: '350px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         />
       </div>
