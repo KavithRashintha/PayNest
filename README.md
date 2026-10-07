@@ -7,6 +7,7 @@ A full-stack personal finance management platform built with microservices. Trac
 **Backend**
 - Java 21 / Spring Boot 3 — User Service, Finance Service, API Gateway
 - Python 3.11 / FastAPI — AI Service (Gemini / OpenAI integration)
+- Apache Kafka 3.8 (KRaft) — Event-driven messaging for asynchronous transaction processing & budget alerts
 - PostgreSQL 16 — shared database with isolated schemas
 - Spring Cloud Gateway — JWT validation, routing, header propagation
 
@@ -30,6 +31,13 @@ A full-stack personal finance management platform built with microservices. Trac
                     │   (:8081)   │ │  Service   │ │  (:8090)  │
                     │             │ │  (:8082)   │ │  FastAPI  │
                     └──────┬──────┘ └─────┬──────┘ └───────────┘
+                           │              │ ▲
+                           │       Events │ │ Consume
+                           │              ▼ │
+                           │       ┌──────────────┐
+                           │       │ Apache Kafka │
+                           │       │   (:9092)    │
+                           │       └──────────────┘
                            │              │
                     ┌──────▼──────────────▼──────┐
                     │     PostgreSQL (:5432)      │
@@ -42,6 +50,7 @@ A full-stack personal finance management platform built with microservices. Trac
 - **Authentication** — JWT-based login/register with token refresh
 - **Accounts** — CRUD for bank, cash, credit card, savings, investment accounts
 - **Transactions** — Log income, expenses, and inter-account transfers
+- **Event-Driven Budget Alerts (Kafka)** — Every logged transaction asynchronously streams to Kafka (`paynest.transaction.events`) where listeners evaluate budget thresholds and trigger alerts in real-time
 - **Categories** — System defaults + custom categories with icons and colors
 - **Budgets** — Set spending limits per category with real-time progress tracking
 - **Dashboard** — Net worth, monthly cashflow stats, expense breakdown chart, recent activity

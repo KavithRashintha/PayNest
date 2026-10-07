@@ -68,6 +68,22 @@ CREATE TABLE IF NOT EXISTS finance_schema.budgets (
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Budget Alerts table in finance_schema (Kafka-driven asynchronous alerts)
+CREATE TABLE IF NOT EXISTS finance_schema.budget_alerts (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    budget_id BIGINT,
+    category_id BIGINT,
+    category_name VARCHAR(100),
+    budget_limit DECIMAL(19, 4),
+    current_spent DECIMAL(19, 4),
+    percentage_used DOUBLE PRECISION,
+    alert_level VARCHAR(20) NOT NULL, -- WARNING, EXCEEDED
+    message VARCHAR(500) NOT NULL,
+    is_read BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Seed System Default Categories
 INSERT INTO finance_schema.categories (user_id, name, type, icon, color, is_system_default)
 VALUES 

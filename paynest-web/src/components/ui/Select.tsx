@@ -41,8 +41,11 @@ export const Select: React.FC<SelectProps> = ({
             style={{
               position: 'absolute',
               left: '14px',
+              top: '50%',
+              transform: 'translateY(-50%)',
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'center',
               color: '#9ca3af',
               pointerEvents: 'none',
               zIndex: 2,
@@ -56,12 +59,13 @@ export const Select: React.FC<SelectProps> = ({
           id={selectId}
           style={{
             width: '100%',
-            padding: icon ? '12px 38px 12px 42px' : '12px 38px 12px 14px',
+            height: '44px',
             backgroundColor: '#ffffff',
             color: '#111827',
             border: error ? '1px solid var(--rose-500)' : '1px solid #e5e7eb',
             borderRadius: 'var(--radius-md)',
             fontSize: '0.925rem',
+            lineHeight: '1.4',
             outline: 'none',
             cursor: 'pointer',
             WebkitAppearance: 'none',
@@ -69,9 +73,15 @@ export const Select: React.FC<SelectProps> = ({
             appearance: 'none',
             transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
             boxSizing: 'border-box',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
             ...style,
+            // Ensure paddingLeft and paddingRight are strictly maintained
+            paddingLeft: icon ? '42px' : '14px',
+            paddingRight: '38px',
           }}
-          className={`paynest-input ${className}`}
+          className={`paynest-select paynest-input ${className}`}
           {...props}
         >
           {children}
@@ -81,8 +91,11 @@ export const Select: React.FC<SelectProps> = ({
           style={{
             position: 'absolute',
             right: '14px',
+            top: '50%',
+            transform: 'translateY(-50%)',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             color: '#9ca3af',
             pointerEvents: 'none',
             zIndex: 2,

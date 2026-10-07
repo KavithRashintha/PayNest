@@ -159,6 +159,30 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
+.paynest-select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+}
+
+.paynest-select::-ms-expand {
+  display: none !important;
+}
+
+.paynest-select:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12) !important;
+  outline: none;
+}
+
+.paynest-select option {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  padding: 8px 12px;
+  font-size: 0.925rem;
+}
+
 .paynest-button {
   transition: background-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
 }

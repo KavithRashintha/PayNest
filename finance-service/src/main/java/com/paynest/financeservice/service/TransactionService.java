@@ -15,6 +15,8 @@ import com.paynest.financeservice.model.TransactionType;
 import com.paynest.financeservice.repository.AccountRepository;
 import com.paynest.financeservice.repository.CategoryRepository;
 import com.paynest.financeservice.repository.TransactionRepository;
+import com.paynest.financeservice.event.TransactionCreatedEvent;
+import com.paynest.financeservice.producer.TransactionEventProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,6 +36,7 @@ public class TransactionService {
     private final CategoryRepository categoryRepository;
     private final AccountService accountService;
     private final CategoryService categoryService;
+    private final TransactionEventProducer transactionEventProducer;
 
     @Transactional
     public TransactionResponse createTransaction(Long userId, TransactionRequest request) {
@@ -70,6 +73,21 @@ public class TransactionService {
                 .build();
 
         Transaction saved = transactionRepository.save(transaction);
+
+        // Publish event to Kafka for asynchronous processing (e.g., budget alerts)
+        TransactionCreatedEvent event = TransactionCreatedEvent.builder()
+                .transactionId(saved.getId())
+                .userId(saved.getUserId())
+                .accountId(saved.getAccount() != null ? saved.getAccount().getId() : null)
+                .categoryId(saved.getCategory() != null ? saved.getCategory().getId() : null)
+                .categoryName(saved.getCategory() != null ? saved.getCategory().getName() : null)
+                .amount(saved.getAmount())
+                .type(saved.getType())
+                .title(saved.getTitle())
+                .transactionDate(saved.getTransactionDate())
+                .build();
+        transactionEventProducer.publishTransactionCreated(event);
+
         return TransactionMapper.toResponse(saved);
     }
 
