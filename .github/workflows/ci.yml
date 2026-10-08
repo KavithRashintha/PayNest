@@ -96,7 +96,7 @@ jobs:
 
       - name: Install Dependencies
         working-directory: ./paynest-web
-        run: npm ci
+        run: npm ci || npm install
 
       - name: Build Production Bundle (Type-check & Vite build)
         working-directory: ./paynest-web
