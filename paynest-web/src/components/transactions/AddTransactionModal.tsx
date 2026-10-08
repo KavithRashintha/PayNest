@@ -13,6 +13,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import { Input } from '../ui/Input';
+import { Select } from '../ui/Select';
 import { Button } from '../ui/Button';
 import { Alert } from '../ui/Alert';
 import { transactionsApi } from '../../api/transactions';
@@ -181,7 +182,7 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
         backdropFilter: 'blur(8px)',
       }}
       className="animate-fade-in"
@@ -190,11 +191,11 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
         style={{
           width: '100%',
           maxWidth: '520px',
-          backgroundColor: '#0f1420',
-          border: '1px solid var(--border-subtle)',
+          backgroundColor: '#ffffff',
+          border: '1px solid #e5e7eb',
           borderRadius: 'var(--radius-lg)',
           padding: '28px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
           position: 'relative',
           maxHeight: '90vh',
           overflowY: 'auto',
@@ -209,7 +210,7 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
             right: '20px',
             background: 'none',
             border: 'none',
-            color: 'var(--text-muted)',
+            color: '#9ca3af',
             cursor: 'pointer',
           }}
         >
@@ -232,10 +233,10 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
             <Receipt size={22} color="#ffffff" />
           </div>
           <div>
-            <h3 style={{ fontSize: '1.25rem', color: '#ffffff', fontWeight: 700 }}>
+            <h3 style={{ fontSize: '1.25rem', color: '#111827', fontWeight: 700 }}>
               New Transaction
             </h3>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>
               Log income, expense, or account transfer
             </span>
           </div>
@@ -246,7 +247,7 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '16px' }}>
           {/* Transaction Type Pills */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
               Transaction Type
             </span>
             <div
@@ -254,10 +255,10 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr 1fr',
                 gap: '6px',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                backgroundColor: '#f9fafb',
                 padding: '4px',
                 borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
               }}
             >
               <button
@@ -356,118 +357,65 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
 
           {/* Account Selection */}
           <div style={{ display: 'flex', gap: '12px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
-              <label htmlFor="account-select" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
-                {type === 'TRANSFER' ? 'From Account' : 'Account'}
-              </label>
-              <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                <Building2 size={18} style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)' }} />
-                <select
-                  id="account-select"
-                  value={accountId}
-                  onChange={(e) => setAccountId(Number(e.target.value))}
-                  className="paynest-input"
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px 12px 42px',
-                    backgroundColor: 'var(--bg-input)',
-                    color: 'var(--text-primary)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: 'var(--radius-md)',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {(accounts || []).map((acc) => (
-                    <option key={acc.id} value={acc.id} style={{ background: '#0f1420', color: '#fff' }}>
-                      {acc.name} ({acc.currency} {acc.balance.toLocaleString()})
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <div style={{ flex: 1 }}>
+              <Select
+                label={type === 'TRANSFER' ? 'From Account' : 'Account'}
+                icon={<Building2 size={18} />}
+                value={accountId}
+                onChange={(e) => setAccountId(Number(e.target.value))}
+              >
+                {(accounts || []).map((acc) => (
+                  <option key={acc.id} value={acc.id}>
+                    {acc.name} ({acc.currency} {acc.balance.toLocaleString()})
+                  </option>
+                ))}
+              </Select>
             </div>
 
             {/* Destination Account selector for TRANSFER */}
             {type === 'TRANSFER' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
-                <label htmlFor="to-account-select" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
-                  To Account
-                </label>
-                <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                  <Building2 size={18} style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)' }} />
-                  <select
-                    id="to-account-select"
-                    value={toAccountId}
-                    onChange={(e) => setToAccountId(Number(e.target.value))}
-                    className="paynest-input"
-                    style={{
-                      width: '100%',
-                      padding: '12px 14px 12px 42px',
-                      backgroundColor: 'var(--bg-input)',
-                      color: 'var(--text-primary)',
-                      border: '1px solid var(--border-subtle)',
-                      borderRadius: 'var(--radius-md)',
-                      fontSize: '0.9rem',
-                      outline: 'none',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <option value="" style={{ background: '#0f1420' }}>Select Destination</option>
-                    {(accounts || []).map((acc) => (
-                      <option key={acc.id} value={acc.id} style={{ background: '#0f1420', color: '#fff' }}>
-                        {acc.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <div style={{ flex: 1 }}>
+                <Select
+                  label="To Account"
+                  icon={<Building2 size={18} />}
+                  value={toAccountId}
+                  onChange={(e) => setToAccountId(Number(e.target.value))}
+                >
+                  <option value="">Select Destination</option>
+                  {(accounts || []).map((acc) => (
+                    <option key={acc.id} value={acc.id}>
+                      {acc.name}
+                    </option>
+                  ))}
+                </Select>
               </div>
             )}
           </div>
 
           {/* Category Dropdown (if not transfer) */}
           {type !== 'TRANSFER' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-              <label htmlFor="category-select" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
-                Category
-              </label>
-              <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                <Tag size={18} style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)' }} />
-                <select
-                  id="category-select"
-                  value={categoryId}
-                  onChange={(e) => setCategoryId(Number(e.target.value))}
-                  className="paynest-input"
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px 12px 42px',
-                    backgroundColor: 'var(--bg-input)',
-                    color: 'var(--text-primary)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: 'var(--radius-md)',
-                    fontSize: '0.9rem',
-                    outline: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <option value="" style={{ background: '#0f1420' }}>Uncategorized</option>
-                  {filteredCategories.map((c) => (
-                    <option key={c.id} value={c.id} style={{ background: '#0f1420', color: '#fff' }}>
-                      {c.name} {c.isSystemDefault ? '(Default)' : ''}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
+            <Select
+              label="Category"
+              icon={<Tag size={18} />}
+              value={categoryId}
+              onChange={(e) => setCategoryId(Number(e.target.value))}
+            >
+              <option value="">Uncategorized</option>
+              {filteredCategories.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name} {c.isSystemDefault ? '(Default)' : ''}
+                </option>
+              ))}
+            </Select>
           )}
 
           {/* Transaction Date */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-            <label htmlFor="tx-date" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+            <label htmlFor="tx-date" style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
               Date & Time
             </label>
             <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <Calendar size={18} style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)' }} />
+              <Calendar size={18} style={{ position: 'absolute', left: '14px', color: '#9ca3af' }} />
               <input
                 id="tx-date"
                 type="datetime-local"
@@ -477,9 +425,9 @@ export const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
                 style={{
                   width: '100%',
                   padding: '12px 14px 12px 42px',
-                  backgroundColor: 'var(--bg-input)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border-subtle)',
+                  backgroundColor: '#ffffff',
+                  color: '#111827',
+                  border: '1px solid #e5e7eb',
                   borderRadius: 'var(--radius-md)',
                   fontSize: '0.9rem',
                   outline: 'none',

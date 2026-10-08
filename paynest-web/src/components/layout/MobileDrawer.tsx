@@ -38,8 +38,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
         inset: 0,
         zIndex: 50,
         display: 'flex',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        backdropFilter: 'blur(8px)',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
       }}
       className="animate-fade-in"
     >
@@ -47,8 +46,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
         style={{
           width: '280px',
           height: '100%',
-          backgroundColor: '#0f1420',
-          borderRight: '1px solid var(--border-subtle)',
+          backgroundColor: '#ffffff',
+          borderRight: '1px solid #e5e7eb',
           padding: '24px 16px',
           display: 'flex',
           flexDirection: 'column',
@@ -84,7 +83,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                   fontFamily: 'var(--font-heading)',
                   fontSize: '1.25rem',
                   fontWeight: 800,
-                  color: '#ffffff',
+                  color: '#111827',
                 }}
               >
                 PayNest
@@ -96,7 +95,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
               style={{
                 background: 'none',
                 border: 'none',
-                color: 'var(--text-muted)',
+                color: '#9ca3af',
                 cursor: 'pointer',
               }}
             >
@@ -119,13 +118,13 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                   borderRadius: 'var(--radius-md)',
                   textDecoration: 'none',
                   color: isActive
-                    ? '#ffffff'
+                    ? '#4f46e5'
                     : item.isAi
-                    ? 'var(--emerald-400)'
-                    : 'var(--text-secondary)',
-                  backgroundColor: isActive ? 'rgba(99, 102, 241, 0.2)' : 'transparent',
-                  border: isActive ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
-                  fontWeight: 500,
+                    ? '#059669'
+                    : '#374151',
+                  backgroundColor: isActive ? '#eef2ff' : 'transparent',
+                  border: isActive ? '1px solid #c7d2fe' : '1px solid transparent',
+                  fontWeight: isActive ? 600 : 500,
                 })}
               >
                 {item.icon}
@@ -138,7 +137,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
         {/* User Info & Logout Footer */}
         <div
           style={{
-            borderTop: '1px solid var(--border-subtle)',
+            borderTop: '1px solid #e5e7eb',
             paddingTop: '16px',
             display: 'flex',
             alignItems: 'center',
@@ -162,10 +161,10 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
               {user?.fullName ? user.fullName.charAt(0).toUpperCase() : 'U'}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#ffffff' }}>
+              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#111827' }}>
                 {user?.fullName || 'User'}
               </span>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{user?.email}</span>
+              <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>{user?.email}</span>
             </div>
           </div>
 

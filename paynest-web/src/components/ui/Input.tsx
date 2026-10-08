@@ -29,7 +29,7 @@ export const Input: React.FC<InputProps> = ({
           style={{
             fontSize: '0.85rem',
             fontWeight: 500,
-            color: 'var(--text-secondary)',
+            color: '#6b7280',
           }}
         >
           {label}
@@ -44,7 +44,7 @@ export const Input: React.FC<InputProps> = ({
               left: '14px',
               display: 'flex',
               alignItems: 'center',
-              color: 'var(--text-muted)',
+              color: '#9ca3af',
               pointerEvents: 'none',
             }}
           >
@@ -58,8 +58,8 @@ export const Input: React.FC<InputProps> = ({
           style={{
             width: '100%',
             padding: icon ? '12px 40px 12px 42px' : isPassword ? '12px 42px 12px 14px' : '12px 14px',
-            backgroundColor: 'var(--bg-input)',
-            color: 'var(--text-primary)',
+            backgroundColor: '#ffffff',
+            color: '#111827',
             border: error ? '1px solid var(--rose-500)' : '1px solid var(--border-subtle)',
             borderRadius: 'var(--radius-md)',
             fontSize: '0.925rem',
@@ -79,7 +79,7 @@ export const Input: React.FC<InputProps> = ({
               right: '12px',
               background: 'none',
               border: 'none',
-              color: 'var(--text-muted)',
+              color: '#9ca3af',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',

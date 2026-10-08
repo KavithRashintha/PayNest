@@ -29,7 +29,7 @@ export const CategoryExpenseChart: React.FC<CategoryExpenseChartProps> = ({
           padding: '32px',
           borderRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-subtle)',
+          border: '1px solid #e5e7eb',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -52,10 +52,10 @@ export const CategoryExpenseChart: React.FC<CategoryExpenseChartProps> = ({
         >
           <PieChartIcon size={24} color="var(--indigo-500)" />
         </div>
-        <h4 style={{ fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '4px' }}>
+        <h4 style={{ fontSize: '1rem', color: '#111827', marginBottom: '4px' }}>
           No Expense Data Yet
         </h4>
-        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+        <p style={{ fontSize: '0.85rem', color: '#9ca3af' }}>
           Start adding transactions to visualize your spending breakdown.
         </p>
       </div>
@@ -82,7 +82,7 @@ export const CategoryExpenseChart: React.FC<CategoryExpenseChartProps> = ({
         padding: '24px',
         borderRadius: 'var(--radius-lg)',
         backgroundColor: 'var(--bg-card)',
-        border: '1px solid var(--border-subtle)',
+        border: '1px solid #e5e7eb',
         backdropFilter: 'blur(16px)',
         display: 'flex',
         flexDirection: 'column',
@@ -91,10 +91,10 @@ export const CategoryExpenseChart: React.FC<CategoryExpenseChartProps> = ({
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
         <div>
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#111827' }}>
             Expenses by Category
           </h3>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+          <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>
             Spending distribution for current period
           </span>
         </div>
@@ -126,20 +126,20 @@ export const CategoryExpenseChart: React.FC<CategoryExpenseChartProps> = ({
                     return (
                       <div
                         style={{
-                          backgroundColor: '#0f1420',
-                          border: '1px solid var(--border-subtle)',
+                          backgroundColor: '#ffffff',
+                          border: '1px solid #e5e7eb',
                           borderRadius: 'var(--radius-md)',
                           padding: '10px 14px',
-                          boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+                          boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
                         }}
                       >
                         <span style={{ fontSize: '0.85rem', fontWeight: 600, color: data.color }}>
                           {data.name}
                         </span>
-                        <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#ffffff', marginTop: '2px' }}>
+                        <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#111827', marginTop: '2px' }}>
                           {currency} {data.value.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                         </div>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                        <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
                           {data.percentage.toFixed(1)}% of total
                         </span>
                       </div>
@@ -162,10 +162,10 @@ export const CategoryExpenseChart: React.FC<CategoryExpenseChartProps> = ({
               pointerEvents: 'none',
             }}
           >
-            <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <span style={{ fontSize: '0.7rem', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Total
             </span>
-            <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+            <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#111827' }}>
               {formattedTotal}
             </div>
           </div>
@@ -193,9 +193,9 @@ export const CategoryExpenseChart: React.FC<CategoryExpenseChartProps> = ({
                     flexShrink: 0,
                   }}
                 />
-                <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{item.name}</span>
+                <span style={{ color: '#111827', fontWeight: 500 }}>{item.name}</span>
               </div>
-              <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>
+              <span style={{ color: '#6b7280', fontWeight: 600 }}>
                 {item.percentage.toFixed(1)}%
               </span>
             </div>

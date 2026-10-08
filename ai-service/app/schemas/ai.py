@@ -11,6 +11,11 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     response: str = Field(..., description="AI advisor response text")
+    actionsTaken: Optional[List[str]] = Field(
+        default=None,
+        description="List of agentic actions the AI autonomously executed (e.g. 'Created budget Food & Dining LKR 25,000/month')"
+    )
+
 
 class CategorizeRequest(BaseModel):
     title: str = Field(..., description="Transaction title or merchant name")

@@ -105,7 +105,7 @@ export const LoginPage: React.FC = () => {
                   alignItems: 'center',
                   gap: '8px',
                   fontSize: '0.85rem',
-                  color: 'var(--text-secondary)',
+                  color: '#6b7280',
                   cursor: 'pointer',
                 }}
               >
@@ -149,7 +149,7 @@ export const LoginPage: React.FC = () => {
             style={{
               textAlign: 'center',
               fontSize: '0.875rem',
-              color: 'var(--text-secondary)',
+              color: '#6b7280',
               marginTop: '8px',
             }}
           >

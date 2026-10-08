@@ -105,10 +105,10 @@ export const AccountsPage: React.FC = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827' }}>
             Financial Accounts
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', marginTop: '2px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.925rem', marginTop: '2px' }}>
             Manage bank accounts, credit cards, cash, and investments.
           </p>
         </div>
@@ -144,8 +144,8 @@ export const AccountsPage: React.FC = () => {
         style={{
           padding: '24px 32px',
           borderRadius: 'var(--radius-lg)',
-          background: 'linear-gradient(135deg, rgba(20, 28, 48, 0.9) 0%, rgba(12, 17, 29, 0.95) 100%)',
-          border: '1px solid var(--border-subtle)',
+          background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+          border: '1px solid #e5e7eb',
           boxShadow: 'var(--shadow-lg)',
           display: 'flex',
           alignItems: 'center',
@@ -170,7 +170,7 @@ export const AccountsPage: React.FC = () => {
             <Wallet size={28} color="#ffffff" />
           </div>
           <div>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+            <span style={{ fontSize: '0.85rem', color: '#9ca3af', fontWeight: 500 }}>
               Total Portfolio Balance
             </span>
             <div style={{ fontSize: '1.85rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em' }}>
@@ -184,13 +184,13 @@ export const AccountsPage: React.FC = () => {
             style={{
               padding: '10px 18px',
               borderRadius: 'var(--radius-md)',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid var(--border-subtle)',
+              backgroundColor: 'rgba(255,255,255,0.15)',
+              border: '1px solid rgba(255,255,255,0.25)',
               textAlign: 'center',
             }}
           >
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Active Accounts</span>
-            <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--indigo-500)' }}>
+            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)' }}>Active Accounts</span>
+            <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#ffffff' }}>
               {accounts?.length || 0}
             </div>
           </div>
@@ -213,7 +213,7 @@ export const AccountsPage: React.FC = () => {
                 height: '160px',
                 borderRadius: 'var(--radius-lg)',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
               }}
             />
           ))}
@@ -225,7 +225,7 @@ export const AccountsPage: React.FC = () => {
             padding: '48px 24px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -247,10 +247,10 @@ export const AccountsPage: React.FC = () => {
           >
             <Wallet size={30} color="var(--indigo-500)" />
           </div>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '6px' }}>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#111827', marginBottom: '6px' }}>
             No Accounts Added Yet
           </h3>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', maxWidth: '400px', marginBottom: '20px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.9rem', maxWidth: '400px', marginBottom: '20px' }}>
             Create your first bank account, cash wallet, or savings account to start tracking transactions.
           </p>
           <Button variant="primary" onClick={() => setIsAddModalOpen(true)}>
@@ -281,7 +281,7 @@ export const AccountsPage: React.FC = () => {
                   padding: '24px',
                   borderRadius: 'var(--radius-lg)',
                   backgroundColor: 'var(--bg-card)',
-                  border: '1px solid var(--border-subtle)',
+                  border: '1px solid #e5e7eb',
                   backdropFilter: 'blur(16px)',
                   display: 'flex',
                   flexDirection: 'column',
@@ -327,14 +327,14 @@ export const AccountsPage: React.FC = () => {
                     style={{
                       fontSize: '1.1rem',
                       fontWeight: 700,
-                      color: 'var(--text-primary)',
+                      color: '#111827',
                       marginBottom: '4px',
                     }}
                   >
                     {acc.name}
                   </h3>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#9ca3af' }}>
                       {acc.currency || user?.currency || 'LKR'}
                     </span>
                     <span
@@ -358,7 +358,7 @@ export const AccountsPage: React.FC = () => {
                     justifyContent: 'flex-end',
                     gap: '8px',
                     paddingTop: '12px',
-                    borderTop: '1px solid var(--border-subtle)',
+                    borderTop: '1px solid #e5e7eb',
                   }}
                 >
                   <button
@@ -366,8 +366,8 @@ export const AccountsPage: React.FC = () => {
                     title="Edit Account"
                     style={{
                       background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid var(--border-subtle)',
-                      color: 'var(--text-secondary)',
+                      border: '1px solid #e5e7eb',
+                      color: '#6b7280',
                       padding: '6px 12px',
                       borderRadius: 'var(--radius-sm)',
                       cursor: 'pointer',

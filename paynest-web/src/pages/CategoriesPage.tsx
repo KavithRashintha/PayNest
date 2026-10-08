@@ -56,10 +56,10 @@ export const CategoriesPage: React.FC = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827' }}>
             Category Management
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', marginTop: '2px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.925rem', marginTop: '2px' }}>
             System default and custom categories for tagging income & expenses.
           </p>
         </div>
@@ -106,10 +106,10 @@ export const CategoriesPage: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: 'rgba(255, 255, 255, 0.04)',
+            backgroundColor: '#f9fafb',
             padding: '4px',
             borderRadius: 'var(--radius-md)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
           }}
         >
           <button
@@ -118,8 +118,8 @@ export const CategoriesPage: React.FC = () => {
               padding: '8px 16px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
-              backgroundColor: activeTab === 'ALL' ? 'rgba(99, 102, 241, 0.2)' : 'transparent',
-              color: activeTab === 'ALL' ? '#ffffff' : 'var(--text-secondary)',
+              backgroundColor: activeTab === 'ALL' ? '#eef2ff' : 'transparent',
+              color: activeTab === 'ALL' ? '#4f46e5' : '#6b7280',
               fontWeight: activeTab === 'ALL' ? 700 : 500,
               fontSize: '0.875rem',
               cursor: 'pointer',
@@ -135,8 +135,8 @@ export const CategoriesPage: React.FC = () => {
               padding: '8px 16px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
-              backgroundColor: activeTab === 'EXPENSE' ? 'rgba(244, 63, 94, 0.2)' : 'transparent',
-              color: activeTab === 'EXPENSE' ? 'var(--rose-500)' : 'var(--text-secondary)',
+              backgroundColor: activeTab === 'EXPENSE' ? '#fff1f2' : 'transparent',
+              color: activeTab === 'EXPENSE' ? '#f43f5e' : '#6b7280',
               fontWeight: activeTab === 'EXPENSE' ? 700 : 500,
               fontSize: '0.875rem',
               cursor: 'pointer',
@@ -156,8 +156,8 @@ export const CategoriesPage: React.FC = () => {
               padding: '8px 16px',
               borderRadius: 'var(--radius-sm)',
               border: 'none',
-              backgroundColor: activeTab === 'INCOME' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-              color: activeTab === 'INCOME' ? 'var(--emerald-400)' : 'var(--text-secondary)',
+              backgroundColor: activeTab === 'INCOME' ? '#ecfdf5' : 'transparent',
+              color: activeTab === 'INCOME' ? '#059669' : '#6b7280',
               fontWeight: activeTab === 'INCOME' ? 700 : 500,
               fontSize: '0.875rem',
               cursor: 'pointer',
@@ -181,7 +181,7 @@ export const CategoriesPage: React.FC = () => {
               left: '12px',
               top: '50%',
               transform: 'translateY(-50%)',
-              color: 'var(--text-muted)',
+              color: '#9ca3af',
             }}
           />
           <input
@@ -193,10 +193,10 @@ export const CategoriesPage: React.FC = () => {
             style={{
               width: '100%',
               padding: '8px 12px 8px 36px',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid var(--border-subtle)',
+              backgroundColor: '#f9fafb',
+              border: '1px solid #e5e7eb',
               borderRadius: 'var(--radius-full)',
-              color: 'var(--text-primary)',
+              color: '#111827',
               fontSize: '0.875rem',
               outline: 'none',
             }}
@@ -220,7 +220,7 @@ export const CategoriesPage: React.FC = () => {
                 height: '90px',
                 borderRadius: 'var(--radius-md)',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
               }}
             />
           ))}
@@ -232,7 +232,7 @@ export const CategoriesPage: React.FC = () => {
             padding: '48px 24px',
             borderRadius: 'var(--radius-lg)',
             backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-subtle)',
+            border: '1px solid #e5e7eb',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -254,10 +254,10 @@ export const CategoriesPage: React.FC = () => {
           >
             <Tag size={28} color="var(--indigo-500)" />
           </div>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '6px' }}>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#111827', marginBottom: '6px' }}>
             No Categories Found
           </h3>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', maxWidth: '380px', marginBottom: '20px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.9rem', maxWidth: '380px', marginBottom: '20px' }}>
             {searchQuery
               ? `No categories matching "${searchQuery}"`
               : 'Add your own custom categories to organize transactions.'}
@@ -287,7 +287,7 @@ export const CategoriesPage: React.FC = () => {
                   padding: '16px 20px',
                   borderRadius: 'var(--radius-md)',
                   backgroundColor: 'var(--bg-card)',
-                  border: '1px solid var(--border-subtle)',
+                  border: '1px solid #e5e7eb',
                   backdropFilter: 'blur(16px)',
                   display: 'flex',
                   alignItems: 'center',
@@ -320,7 +320,7 @@ export const CategoriesPage: React.FC = () => {
                       style={{
                         fontSize: '0.95rem',
                         fontWeight: 600,
-                        color: 'var(--text-primary)',
+                        color: '#111827',
                         whiteSpace: 'nowrap',
                         textOverflow: 'ellipsis',
                         overflow: 'hidden',
@@ -351,11 +351,11 @@ export const CategoriesPage: React.FC = () => {
                         gap: '4px',
                         fontSize: '0.7rem',
                         fontWeight: 600,
-                        color: 'var(--text-muted)',
+                        color: '#9ca3af',
                         padding: '4px 8px',
                         borderRadius: 'var(--radius-full)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid var(--border-subtle)',
+                        backgroundColor: '#f9fafb',
+                        border: '1px solid #e5e7eb',
                       }}
                     >
                       <Lock size={11} />

@@ -54,7 +54,7 @@ export const DeleteBudgetModal: React.FC<DeleteBudgetModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
         backdropFilter: 'blur(8px)',
       }}
       className="animate-fade-in"
@@ -63,11 +63,11 @@ export const DeleteBudgetModal: React.FC<DeleteBudgetModalProps> = ({
         style={{
           width: '100%',
           maxWidth: '420px',
-          backgroundColor: '#0f1420',
-          border: '1px solid var(--border-subtle)',
+          backgroundColor: '#ffffff',
+          border: '1px solid #e5e7eb',
           borderRadius: 'var(--radius-lg)',
           padding: '28px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
           position: 'relative',
         }}
       >
@@ -79,7 +79,7 @@ export const DeleteBudgetModal: React.FC<DeleteBudgetModalProps> = ({
             right: '20px',
             background: 'none',
             border: 'none',
-            color: 'var(--text-muted)',
+            color: '#9ca3af',
             cursor: 'pointer',
           }}
         >
@@ -102,11 +102,11 @@ export const DeleteBudgetModal: React.FC<DeleteBudgetModalProps> = ({
             <AlertTriangle size={28} color="var(--rose-500)" />
           </div>
 
-          <h3 style={{ fontSize: '1.25rem', color: '#ffffff', fontWeight: 700, marginBottom: '8px' }}>
+          <h3 style={{ fontSize: '1.25rem', color: '#111827', fontWeight: 700, marginBottom: '8px' }}>
             Delete Budget Limit?
           </h3>
 
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '20px' }}>
+          <p style={{ color: '#6b7280', fontSize: '0.9rem', marginBottom: '20px' }}>
             Are you sure you want to remove the budget for <strong>{budget.categoryName || 'Category'}</strong>?
           </p>
 

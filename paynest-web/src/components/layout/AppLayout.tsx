@@ -26,8 +26,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         display: 'flex',
         minHeight: '100vh',
         width: '100%',
-        backgroundColor: 'var(--bg-primary)',
-        color: 'var(--text-primary)',
+        backgroundColor: '#f7f8fa',
+        color: '#111827',
       }}
     >
       {/* Desktop Collapsible Sidebar */}

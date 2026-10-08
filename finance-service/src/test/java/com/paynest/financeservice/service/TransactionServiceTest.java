@@ -43,6 +43,9 @@ class TransactionServiceTest {
     @Mock
     private CategoryService categoryService;
 
+    @Mock
+    private com.paynest.financeservice.producer.TransactionEventProducer transactionEventProducer;
+
     @InjectMocks
     private TransactionService transactionService;
 

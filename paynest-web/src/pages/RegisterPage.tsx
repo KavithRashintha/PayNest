@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, User as UserIcon, Coins, ArrowRight } from 'lucide-react';
 import { AuthLayout } from '../components/auth/AuthLayout';
 import { Input } from '../components/ui/Input';
+import { Select } from '../components/ui/Select';
 import { Button } from '../components/ui/Button';
 import { Alert } from '../components/ui/Alert';
 import { useAuth } from '../context/AuthContext';
@@ -131,7 +132,7 @@ export const RegisterPage: React.FC = () => {
           {password && (
             <div style={{ marginTop: '6px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '4px' }}>
-                <span style={{ color: 'var(--text-muted)' }}>Password strength</span>
+                <span style={{ color: '#9ca3af' }}>Password strength</span>
                 <span style={{ color: strength.color, fontWeight: 600 }}>{strength.label}</span>
               </div>
               <div style={{ height: '4px', backgroundColor: 'rgba(255, 255, 255, 0.1)', borderRadius: '2px', overflow: 'hidden' }}>
@@ -149,56 +150,18 @@ export const RegisterPage: React.FC = () => {
         </div>
 
         {/* Currency Selector */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-          <label
-            htmlFor="currency-select"
-            style={{
-              fontSize: '0.85rem',
-              fontWeight: 500,
-              color: 'var(--text-secondary)',
-            }}
-          >
-            Base Currency
-          </label>
-          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', width: '100%' }}>
-            <div
-              style={{
-                position: 'absolute',
-                left: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                color: 'var(--text-muted)',
-                pointerEvents: 'none',
-              }}
-            >
-              <Coins size={18} />
-            </div>
-            <select
-              id="currency-select"
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              className="paynest-input"
-              style={{
-                width: '100%',
-                padding: '12px 14px 12px 42px',
-                backgroundColor: 'var(--bg-input)',
-                color: 'var(--text-primary)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-md)',
-                fontSize: '0.925rem',
-                outline: 'none',
-                cursor: 'pointer',
-                appearance: 'none',
-              }}
-            >
-              {CURRENCIES.map((c) => (
-                <option key={c.code} value={c.code} style={{ background: '#0f1420', color: '#fff' }}>
-                  {c.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+        <Select
+          label="Base Currency"
+          icon={<Coins size={18} />}
+          value={currency}
+          onChange={(e) => setCurrency(e.target.value)}
+        >
+          {CURRENCIES.map((c) => (
+            <option key={c.code} value={c.code}>
+              {c.label}
+            </option>
+          ))}
+        </Select>
 
         {/* Terms Agreement Checkbox */}
         <label
@@ -207,7 +170,7 @@ export const RegisterPage: React.FC = () => {
             alignItems: 'flex-start',
             gap: '10px',
             fontSize: '0.825rem',
-            color: 'var(--text-secondary)',
+            color: '#6b7280',
             cursor: 'pointer',
             marginTop: '4px',
           }}
@@ -239,7 +202,7 @@ export const RegisterPage: React.FC = () => {
           style={{
             textAlign: 'center',
             fontSize: '0.875rem',
-            color: 'var(--text-secondary)',
+            color: '#6b7280',
             marginTop: '4px',
           }}
         >

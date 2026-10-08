@@ -51,7 +51,7 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
         backdropFilter: 'blur(8px)',
       }}
       className="animate-fade-in"
@@ -60,11 +60,11 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
         style={{
           width: '100%',
           maxWidth: '440px',
-          backgroundColor: '#0f1420',
-          border: '1px solid var(--border-subtle)',
+          backgroundColor: '#ffffff',
+          border: '1px solid #e5e7eb',
           borderRadius: 'var(--radius-lg)',
           padding: '28px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
           position: 'relative',
         }}
       >
@@ -76,7 +76,7 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
             right: '20px',
             background: 'none',
             border: 'none',
-            color: 'var(--text-muted)',
+            color: '#9ca3af',
             cursor: 'pointer',
           }}
         >
@@ -99,10 +99,10 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
             >
               <CheckCircle2 size={32} color="var(--emerald-400)" />
             </div>
-            <h3 style={{ fontSize: '1.25rem', color: '#ffffff', marginBottom: '8px' }}>
+            <h3 style={{ fontSize: '1.25rem', color: '#111827', marginBottom: '8px' }}>
               Reset Link Sent!
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '24px' }}>
+            <p style={{ color: '#6b7280', fontSize: '0.9rem', marginBottom: '24px' }}>
               We've sent password reset instructions to <strong>{email}</strong>. Check your inbox.
             </p>
             <Button fullWidth onClick={handleClose}>
@@ -112,10 +112,10 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
         ) : (
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div>
-              <h3 style={{ fontSize: '1.25rem', color: '#ffffff', marginBottom: '6px' }}>
+              <h3 style={{ fontSize: '1.25rem', color: '#111827', marginBottom: '6px' }}>
                 Reset Password
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
+              <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
                 Enter your email address and we'll send you instructions to reset your password.
               </p>
             </div>

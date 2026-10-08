@@ -11,6 +11,7 @@ import {
 import { useAuth } from '../hooks/useAuth';
 import { usersApi } from '../api/users';
 import { Input } from '../components/ui/Input';
+import { Select } from '../components/ui/Select';
 import { Button } from '../components/ui/Button';
 import { Alert } from '../components/ui/Alert';
 
@@ -75,10 +76,10 @@ export const ProfilePage: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', maxWidth: '800px', margin: '0 auto' }}>
       {/* Header */}
       <div>
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+        <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#111827' }}>
           User Profile & Settings
         </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', marginTop: '2px' }}>
+        <p style={{ color: '#6b7280', fontSize: '0.925rem', marginTop: '2px' }}>
           Manage your account credentials, preferences, and base currency.
         </p>
       </div>
@@ -92,7 +93,7 @@ export const ProfilePage: React.FC = () => {
           padding: '28px',
           borderRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-subtle)',
+          border: '1px solid #e5e7eb',
           backdropFilter: 'blur(16px)',
           display: 'flex',
           alignItems: 'center',
@@ -120,10 +121,10 @@ export const ProfilePage: React.FC = () => {
         </div>
 
         <div style={{ flex: 1 }}>
-          <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+          <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#111827' }}>
             {user?.fullName || 'User'}
           </h2>
-          <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>{user?.email}</span>
+          <span style={{ fontSize: '0.875rem', color: '#6b7280' }}>{user?.email}</span>
         </div>
 
         <div
@@ -150,14 +151,14 @@ export const ProfilePage: React.FC = () => {
           padding: '28px',
           borderRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-subtle)',
+          border: '1px solid #e5e7eb',
           backdropFilter: 'blur(16px)',
           display: 'flex',
           flexDirection: 'column',
           gap: '20px',
         }}
       >
-        <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+        <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#111827' }}>
           Account Details
         </h3>
 
@@ -180,37 +181,18 @@ export const ProfilePage: React.FC = () => {
           />
 
           {/* Preferred Base Currency */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-            <label htmlFor="pref-currency" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
-              Preferred Base Currency
-            </label>
-            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <Coins size={18} style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)' }} />
-              <select
-                id="pref-currency"
-                value={currency}
-                onChange={(e) => setCurrency(e.target.value)}
-                className="paynest-input"
-                style={{
-                  width: '100%',
-                  padding: '12px 14px 12px 42px',
-                  backgroundColor: 'var(--bg-input)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: 'var(--radius-md)',
-                  fontSize: '0.925rem',
-                  outline: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                {CURRENCIES.map((c) => (
-                  <option key={c.code} value={c.code} style={{ background: '#0f1420', color: '#fff' }}>
-                    {c.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <Select
+            label="Preferred Base Currency"
+            icon={<Coins size={18} />}
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
+            {CURRENCIES.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.label}
+              </option>
+            ))}
+          </Select>
 
           <div style={{ marginTop: '10px' }}>
             <Button type="submit" isLoading={isLoading}>
@@ -227,7 +209,7 @@ export const ProfilePage: React.FC = () => {
           padding: '24px 28px',
           borderRadius: 'var(--radius-lg)',
           backgroundColor: 'var(--bg-card)',
-          border: '1px solid var(--border-subtle)',
+          border: '1px solid #e5e7eb',
           backdropFilter: 'blur(16px)',
           display: 'flex',
           alignItems: 'center',
@@ -237,10 +219,10 @@ export const ProfilePage: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Shield size={22} color="var(--indigo-500)" />
           <div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#111827' }}>
               Active Session
             </h4>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+            <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>
               Signed in as {user?.email}
             </span>
           </div>

@@ -1,5 +1,7 @@
 # PayNest
 
+[![CI Pipeline](https://github.com/KavithRashintha/PayNest/actions/workflows/ci.yml/badge.svg)](https://github.com/KavithRashintha/PayNest/actions/workflows/ci.yml)
+
 A full-stack personal finance management platform built with microservices. Track accounts, log transactions, set budgets, and get AI-powered financial advice — all from one dashboard.
 
 ## Tech Stack
@@ -7,6 +9,7 @@ A full-stack personal finance management platform built with microservices. Trac
 **Backend**
 - Java 21 / Spring Boot 3 — User Service, Finance Service, API Gateway
 - Python 3.11 / FastAPI — AI Service (Gemini / OpenAI integration)
+- Apache Kafka 3.8 (KRaft) — Event-driven messaging for asynchronous transaction processing & budget alerts
 - PostgreSQL 16 — shared database with isolated schemas
 - Spring Cloud Gateway — JWT validation, routing, header propagation
 
@@ -30,9 +33,16 @@ A full-stack personal finance management platform built with microservices. Trac
                     │   (:8081)   │ │  Service   │ │  (:8090)  │
                     │             │ │  (:8082)   │ │  FastAPI  │
                     └──────┬──────┘ └─────┬──────┘ └───────────┘
+                           │              │ ▲
+                           │       Events │ │ Consume
+                           │              ▼ │
+                           │       ┌──────────────┐
+                           │       │ Apache Kafka │
+                           │       │   (:9092)    │
+                           │       └──────────────┘
                            │              │
                     ┌──────▼──────────────▼──────┐
-                    │     PostgreSQL (:5432) │
+                    │     PostgreSQL (:5432)      │
                     │  user_schema │ finance_schema│
                     └────────────────────────────┘
 ```
@@ -42,6 +52,7 @@ A full-stack personal finance management platform built with microservices. Trac
 - **Authentication** — JWT-based login/register with token refresh
 - **Accounts** — CRUD for bank, cash, credit card, savings, investment accounts
 - **Transactions** — Log income, expenses, and inter-account transfers
+- **Event-Driven Budget Alerts (Kafka)** — Every logged transaction asynchronously streams to Kafka (`paynest.transaction.events`) where listeners evaluate budget thresholds and trigger alerts in real-time
 - **Categories** — System defaults + custom categories with icons and colors
 - **Budgets** — Set spending limits per category with real-time progress tracking
 - **Dashboard** — Net worth, monthly cashflow stats, expense breakdown chart, recent activity
@@ -60,7 +71,7 @@ A full-stack personal finance management platform built with microservices. Trac
 
 ```bash
 # Clone the repo
-git clone https://github.com/KavithRashinwortha/PayNest.git
+git clone https://github.com/KavithRashintha/PayNest.git
 cd PayNest
 
 # (Optional) Set AI API key
@@ -70,7 +81,7 @@ export GEMINI_API_KEY=your_key_here
 docker-compose up --build
 ```
 
-That's it. All 6 containers (Postgres, User Service, Finance Service, AI Service, Gateway, Web App) will spin up.
+That's it. All 6 containers (Postgres, Kafka, User Service, Finance Service, AI Service, Gateway, Web App) will spin up.
 
 ### Access
 
@@ -79,6 +90,7 @@ That's it. All 6 containers (Postgres, User Service, Finance Service, AI Service
 | Web App | http://localhost:5173 |
 | API Gateway | http://localhost:8080 |
 | PostgreSQL | localhost:5432 |
+| Kafka Broker | localhost:9092 |
 
 ### Run Frontend Separately (Dev Mode)
 
@@ -95,7 +107,7 @@ The Vite dev server proxies `/api` requests to `localhost:8080`.
 ```
 PayNest/
 ├── user-service/        # Auth, JWT, user profiles (Spring Boot)
-├── finance-service/     # Accounts, transactions, budgets, analytics (Spring Boot)
+├── finance-service/     # Accounts, transactions, budgets, alerts (Spring Boot)
 ├── ai-service/          # Chat, insights, categorization (FastAPI + LangChain)
 ├── gateway/             # API Gateway (Spring Cloud Gateway)
 ├── paynest-web/         # React frontend
@@ -110,3 +122,19 @@ PayNest/
 | `GEMINI_API_KEY` | Google Gemini API key for AI features | No (falls back to rules engine) |
 | `OPENAI_API_KEY` | OpenAI API key (alternative to Gemini) | No |
 
+## Continuous Integration (CI)
+
+PayNest uses a comprehensive **GitHub Actions CI Pipeline** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) running on every push and pull request to `main` and `developer`:
+
+- **Spring Boot Services Matrix**: Builds and tests `user-service`, `finance-service`, and `gateway` with Java 21 & Maven.
+- **AI Agent Service**: Sets up Python 3.11, installs dependencies, and runs full test suite with `pytest`.
+- **Web Frontend**: Type-checks and builds production Vite bundle (`tsc && vite build`) on Node 20.
+- **Docker Compose Verification**: Validates compose configuration and builds all container images in parallel.
+
+## Default Currency
+
+LKR (Sri Lankan Rupee). Users can change their preferred currency in profile settings.
+
+## License
+
+MIT

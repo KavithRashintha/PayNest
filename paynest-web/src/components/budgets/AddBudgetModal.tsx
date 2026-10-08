@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { Input } from '../ui/Input';
+import { Select } from '../ui/Select';
 import { Button } from '../ui/Button';
 import { Alert } from '../ui/Alert';
 import { budgetsApi } from '../../api/budgets';
@@ -152,7 +153,7 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
         backdropFilter: 'blur(8px)',
       }}
       className="animate-fade-in"
@@ -161,11 +162,11 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
         style={{
           width: '100%',
           maxWidth: '480px',
-          backgroundColor: '#0f1420',
-          border: '1px solid var(--border-subtle)',
+          backgroundColor: '#ffffff',
+          border: '1px solid #e5e7eb',
           borderRadius: 'var(--radius-lg)',
           padding: '28px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
           position: 'relative',
         }}
       >
@@ -178,7 +179,7 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
             right: '20px',
             background: 'none',
             border: 'none',
-            color: 'var(--text-muted)',
+            color: '#9ca3af',
             cursor: 'pointer',
           }}
         >
@@ -201,10 +202,10 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
             <PieChart size={22} color="#ffffff" />
           </div>
           <div>
-            <h3 style={{ fontSize: '1.25rem', color: '#ffffff', fontWeight: 700 }}>
+            <h3 style={{ fontSize: '1.25rem', color: '#111827', fontWeight: 700 }}>
               Create Budget Limit
             </h3>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>
               Set a spending cap on categories to control expenses
             </span>
           </div>
@@ -214,37 +215,18 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '16px' }}>
           {/* Category Dropdown */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-            <label htmlFor="budget-category" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
-              Target Category
-            </label>
-            <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <Tag size={18} style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)' }} />
-              <select
-                id="budget-category"
-                value={categoryId}
-                onChange={(e) => setCategoryId(Number(e.target.value))}
-                className="paynest-input"
-                style={{
-                  width: '100%',
-                  padding: '12px 14px 12px 42px',
-                  backgroundColor: 'var(--bg-input)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border-subtle)',
-                  borderRadius: 'var(--radius-md)',
-                  fontSize: '0.9rem',
-                  outline: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                {(categories || []).map((cat) => (
-                  <option key={cat.id} value={cat.id} style={{ background: '#0f1420', color: '#fff' }}>
-                    {cat.name} {cat.isSystemDefault ? '(Default)' : ''}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <Select
+            label="Target Category"
+            icon={<Tag size={18} />}
+            value={categoryId}
+            onChange={(e) => setCategoryId(Number(e.target.value))}
+          >
+            {(categories || []).map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name} {cat.isSystemDefault ? '(Default)' : ''}
+              </option>
+            ))}
+          </Select>
 
           {/* Amount Limit */}
           <Input
@@ -260,7 +242,7 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
 
           {/* Period Selector */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
-            <label style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+            <label style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
               Budget Period
             </label>
             <div
@@ -268,10 +250,10 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr 1fr',
                 gap: '6px',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                backgroundColor: '#f9fafb',
                 padding: '4px',
                 borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
               }}
             >
               {BUDGET_PERIODS.map((p) => (
@@ -300,11 +282,11 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
           {/* Date Range Pickers */}
           <div style={{ display: 'flex', gap: '12px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
-              <label htmlFor="start-date" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+              <label htmlFor="start-date" style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
                 Start Date
               </label>
               <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                <Calendar size={16} style={{ position: 'absolute', left: '12px', color: 'var(--text-muted)' }} />
+                <Calendar size={16} style={{ position: 'absolute', left: '12px', color: '#9ca3af' }} />
                 <input
                   id="start-date"
                   type="date"
@@ -314,9 +296,9 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
                   style={{
                     width: '100%',
                     padding: '10px 10px 10px 36px',
-                    backgroundColor: 'var(--bg-input)',
-                    color: 'var(--text-primary)',
-                    border: '1px solid var(--border-subtle)',
+                    backgroundColor: '#ffffff',
+                    color: '#111827',
+                    border: '1px solid #e5e7eb',
                     borderRadius: 'var(--radius-md)',
                     fontSize: '0.85rem',
                     outline: 'none',
@@ -326,11 +308,11 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
-              <label htmlFor="end-date" style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+              <label htmlFor="end-date" style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
                 End Date
               </label>
               <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                <Clock size={16} style={{ position: 'absolute', left: '12px', color: 'var(--text-muted)' }} />
+                <Clock size={16} style={{ position: 'absolute', left: '12px', color: '#9ca3af' }} />
                 <input
                   id="end-date"
                   type="date"
@@ -340,9 +322,9 @@ export const AddBudgetModal: React.FC<AddBudgetModalProps> = ({
                   style={{
                     width: '100%',
                     padding: '10px 10px 10px 36px',
-                    backgroundColor: 'var(--bg-input)',
-                    color: 'var(--text-primary)',
-                    border: '1px solid var(--border-subtle)',
+                    backgroundColor: '#ffffff',
+                    color: '#111827',
+                    border: '1px solid #e5e7eb',
                     borderRadius: 'var(--radius-md)',
                     fontSize: '0.85rem',
                     outline: 'none',

@@ -3,6 +3,7 @@ import { apiClient } from './axios';
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
+  actionsTaken?: string[];
 }
 
 export interface ChatRequest {
@@ -12,6 +13,7 @@ export interface ChatRequest {
 
 export interface ChatResponse {
   response: string;
+  actionsTaken?: string[];
 }
 
 export interface CategorizeRequest {

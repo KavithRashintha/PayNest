@@ -124,7 +124,7 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
         alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
         backdropFilter: 'blur(8px)',
       }}
       className="animate-fade-in"
@@ -133,11 +133,11 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
         style={{
           width: '100%',
           maxWidth: '480px',
-          backgroundColor: '#0f1420',
-          border: '1px solid var(--border-subtle)',
+          backgroundColor: '#ffffff',
+          border: '1px solid #e5e7eb',
           borderRadius: 'var(--radius-lg)',
           padding: '28px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
           position: 'relative',
           maxHeight: '90vh',
           overflowY: 'auto',
@@ -152,7 +152,7 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
             right: '20px',
             background: 'none',
             border: 'none',
-            color: 'var(--text-muted)',
+            color: '#9ca3af',
             cursor: 'pointer',
           }}
         >
@@ -175,8 +175,8 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
             <Tag size={22} color="#ffffff" />
           </div>
           <div>
-            <h3 style={{ fontSize: '1.25rem', color: '#ffffff', fontWeight: 700 }}>Add Category</h3>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            <h3 style={{ fontSize: '1.25rem', color: '#111827', fontWeight: 700 }}>Add Category</h3>
+            <span style={{ fontSize: '0.85rem', color: '#6b7280' }}>
               Create a custom spending or income category
             </span>
           </div>
@@ -187,7 +187,7 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '16px' }}>
           {/* Category Type Toggle */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
               Category Type
             </span>
             <div
@@ -195,10 +195,10 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 gap: '8px',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                backgroundColor: '#f9fafb',
                 padding: '4px',
                 borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
               }}
             >
               <button
@@ -250,7 +250,7 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
 
           {/* Color Picker Palette */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
               Category Color
             </span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
@@ -293,7 +293,7 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
 
           {/* Icon Selector Grid */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 500, color: '#6b7280' }}>
               Choose Icon
             </span>
             <div
@@ -304,7 +304,7 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
                 padding: '10px',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
                 borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--border-subtle)',
+                border: '1px solid #e5e7eb',
               }}
             >
               {CATEGORY_ICONS.map((item) => (

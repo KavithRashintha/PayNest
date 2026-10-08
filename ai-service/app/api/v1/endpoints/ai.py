@@ -18,15 +18,20 @@ async def chat_with_advisor(
 ):
     """
     Accepts user prompt and message history, queries live user context from finance-service,
-    and returns AI advisor response.
+    and returns AI advisor response. When the AI executes agentic actions (e.g. creating a
+    budget or logging a transaction), those are reported in the `actionsTaken` field.
     """
     history_dicts = [h.model_dump() for h in request.history] if request.history else None
-    response_text = await ai_agent_service.generate_chat_response(
+    response_text, actions_taken = await ai_agent_service.generate_chat_response(
         user_id=current_user.id,
         user_message=request.message,
         chat_history=history_dicts,
     )
-    return ChatResponse(response=response_text)
+    return ChatResponse(
+        response=response_text,
+        actionsTaken=actions_taken if actions_taken else None,
+    )
+
 
 @router.get("/insights", response_model=InsightsResponse, summary="Get AI Financial Insights")
 async def get_financial_insights(
