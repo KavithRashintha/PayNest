@@ -1,5 +1,7 @@
 # PayNest
 
+[![CI Pipeline](https://github.com/KavithRashintha/PayNest/actions/workflows/ci.yml/badge.svg)](https://github.com/KavithRashintha/PayNest/actions/workflows/ci.yml)
+
 A full-stack personal finance management platform built with microservices. Track accounts, log transactions, set budgets, and get AI-powered financial advice — all from one dashboard.
 
 ## Tech Stack
@@ -118,6 +120,15 @@ PayNest/
 |----------|-------------|----------|
 | `GEMINI_API_KEY` | Google Gemini API key for AI features | No (falls back to rules engine) |
 | `OPENAI_API_KEY` | OpenAI API key (alternative to Gemini) | No |
+
+## Continuous Integration (CI)
+
+PayNest uses a comprehensive **GitHub Actions CI Pipeline** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) running on every push and pull request to `main` and `developer`:
+
+- **Spring Boot Services Matrix**: Builds and tests `user-service`, `finance-service`, and `gateway` with Java 21 & Maven.
+- **AI Agent Service**: Sets up Python 3.11, installs dependencies, and runs full test suite with `pytest`.
+- **Web Frontend**: Type-checks and builds production Vite bundle (`tsc && vite build`) on Node 20.
+- **Docker Compose Verification**: Validates compose configuration and builds all container images in parallel.
 
 ## Default Currency
 
